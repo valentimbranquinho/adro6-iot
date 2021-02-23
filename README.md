@@ -11,7 +11,7 @@ http://docs.micropython.org/en/latest/esp32/quickref.html#capacitive-touch
 Para ligar ao ESP32 e começar a fazer o reset, é preciso carregar no botão de boot...
 
     esptool.py --port /dev/tty.SLAB_USBtoUART erase_flash
-    esptool.py --chip esp32 --port /dev/tty.SLAB_USBtoUART --baud 460800 write_flash -z 0x1000 esp32-idf3-20210202-v1.14.bin
+    esptool.py --chip esp32 --port /dev/tty.SLAB_USBtoUART --baud 460800 write_flash -z 0x1000 esp32/esp32-idf3-20210202-v1.14.bin
 
 Interagir com Micropython:
 
@@ -35,3 +35,11 @@ https://blog.asksensors.com/connect-pir-motion-sensor-esp32-mqtt/
 PIR VCC to ESP32 dev board 5V
 PIR GND to ESP32 GDN
 PIR DATA to ESP32 GPIO through a 1K Resistor (D2 in this tutorial).
+
+# Notas
+
+    # check if the device woke from a deep sleep
+    if machine.reset_cause() == machine.DEEPSLEEP_RESET:
+        print('woke from a deep sleep')
+    # put the device to sleep for 10 seconds
+    machine.deepsleep(10000)
