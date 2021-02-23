@@ -2,6 +2,10 @@
 import machine
 import ubinascii
 import esp32
+import urequests
+import ujson
+
+API_URL = 'http://192.168.1.65:8000/'
 
 
 class Agent:
@@ -13,14 +17,21 @@ class Agent:
             'board-temperature': 0,
         }
 
-        self.updateSensors()
+        self.update()
 
-    def updateSensors(self, moreSensorsData = {}):
+    def update(self, moreSensorsData = {}):
         self.sensors['hall'] = esp32.hall_sensor()
         self.sensors['board-temperature'] = (esp32.raw_temperature() - 32) * 5.0/9.0
 
         if moreSensorsData:
             self.sensors.update(moreSensorsData)
+
+    def post(self):
+        try:
+            post = urequests.post(API_URL, json=self.__dict__)
+            post.close()
+        except:
+            pass
 
     # def updateNetwork(self, wlan):
     #     self.network['mac'] = parseUbiCode(wlan.config('mac'))
