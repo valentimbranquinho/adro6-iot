@@ -11,7 +11,7 @@ http://docs.micropython.org/en/latest/esp32/quickref.html#capacitive-touch
 Para ligar ao ESP32 e começar a fazer o reset, é preciso carregar no botão de boot...
 
     esptool.py --port /dev/tty.SLAB_USBtoUART erase_flash
-    esptool.py --chip esp32 --port /dev/tty.SLAB_USBtoUART --baud 460800 write_flash -z 0x1000 esp32/esp32-idf3-20210202-v1.14.bin
+    esptool.py --chip esp32 --port /dev/tty.SLAB_USBtoUART --baud 460800 write_flash -z 0x1000 esp32/micropython/esp32-idf3-20210202-v1.14.bin
 
 Interagir com Micropython:
 

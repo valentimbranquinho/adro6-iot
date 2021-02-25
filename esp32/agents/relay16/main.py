@@ -2,32 +2,52 @@
 # ESP 32
 import machine
 import utime
-
-import wifi
 import utils
 
+try:
+    import picoweb
+except ImportError:
+    print('Getting picoweb...')
+    import upip
+    upip.install('picoweb')
+    upip.install('pycopy-ulogging')
 
-wlan = wifi.connect() # wait for connection
+# agent = utils.Agent()
+app = picoweb.WebApp(__name__)
+led = machine.Pin(15, machine.Pin.OUT, value=0)
+# relay = machine.Pin(26, machine.Pin.OUT)
 
-agent = utils.Agent()
-agent.updateNetwork(wlan)
-agent.updateSensors()
-
-led = machine.Pin(15, machine.Pin.OUT)
-pir = machine.Pin(14, machine.Pin.IN)
-touch = machine.TouchPad(machine.Pin(4))
-
-touch.config(500) # configure the threshold at which the pin is considered touched
-led.value(0)
 
 print('Relay16 agent is ready!')
+print(wlan.ifconfig())
 
-while True:
-    agent.updateSensors({
-        'touch': bool(touch.read() < 500),
-        'motion': bool(pir()),
-    })
-    print(agent)
 
-    led.value(1)
-    utime.sleep(2)
+@app.route("/", methods=['POST'])
+def query(request, response):
+    if request.method == "POST":
+        yield from request.read_form_data()
+    else:  # GET, apparently
+        # Note: parse_qs() is not a coroutine, but a normal function.
+        # But you can call it using yield from too.
+        request.parse_qs()
+
+    # Whether form data comes from GET or POST request, once parsed,
+    # it's available as req.form dictionary
+
+    yield from picoweb.start_response(response)
+    yield from response.awrite("Hello %s!" % request.form["name"])
+
+
+app.run(debug=True, host="0.0.0.0")
+
+
+# while True:
+#     # print(agent.__dict__)
+#     led.value(1)
+
+#     if relay():
+#         relay.value(0)
+#     else:
+#         relay.value(1)
+
+#     utime.sleep(10)

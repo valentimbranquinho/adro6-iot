@@ -2,14 +2,24 @@
 import network
 import machine
 
+WIFI_SSID = 'HMI-XF-2G'
+WIFI_PASSWORD = '3.raparigas#2.rapazes'
+
 
 def connect():
-  wlan = network.WLAN(network.STA_IF)
-  wlan.active(True)
+    wlan = network.WLAN(network.STA_IF)
 
-  wlan.connect('HMI-XF-2G', '3.raparigas#2.rapazes')
+    if wlan.isconnected():
+        print("Already connected")
+        return wlan
 
-  while not wlan.isconnected():
-      machine.idle() # save power while waiting
+    wlan.active(True)
+    wlan.connect(WIFI_SSID, WIFI_PASSWORD)
 
-  return wlan
+    while not wlan.isconnected():
+        machine.idle()  # save power while waiting
+
+    print('Connection successful')
+    print(wlan.ifconfig())
+
+    return wlan

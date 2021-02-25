@@ -9,8 +9,6 @@ import wifi
 
 API_URL = 'http://192.168.1.65:8000/'
 
-wlan = wifi.connect() # wait for connection
-
 agent = utils.Agent()
 
 led = machine.Pin(15, machine.Pin.OUT)

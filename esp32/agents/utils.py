@@ -19,9 +19,10 @@ class Agent:
 
         self.update()
 
-    def update(self, moreSensorsData = {}):
+    def update(self, moreSensorsData={}):
         self.sensors['hall'] = esp32.hall_sensor()
-        self.sensors['board-temperature'] = (esp32.raw_temperature() - 32) * 5.0/9.0
+        self.sensors['board-temperature'] = (
+            esp32.raw_temperature() - 32) * 5.0/9.0
 
         if moreSensorsData:
             self.sensors.update(moreSensorsData)
@@ -37,5 +38,6 @@ class Agent:
     #     self.network['mac'] = parseUbiCode(wlan.config('mac'))
     #     self.network['ifconfig'] = wlan.ifconfig()
 
+
 def parseUbiCode(code):
-  return ubinascii.hexlify(code).decode('utf-8')
+    return ubinascii.hexlify(code).decode('utf-8')
