@@ -1,0 +1,2786 @@
+<!DOCTYPE html>
+<!-- saved from url=(0057)https://www.raspberrypi.org/forums/viewtopic.php?t=176241 -->
+<html dir="ltr" lang="en-gb"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>PIR Motion sensor always outputting - Raspberry Pi Forums</title>
+
+	<link rel="alternate" type="application/atom+xml" title="Feed - Raspberry Pi Forums" href="https://www.raspberrypi.org/forums/app.php/feed?sid=ab3b8a754e135e91d58599e2f04a26c5">			<link rel="alternate" type="application/atom+xml" title="Feed - New Topics" href="https://www.raspberrypi.org/forums/app.php/feed/topics?sid=ab3b8a754e135e91d58599e2f04a26c5">		<link rel="alternate" type="application/atom+xml" title="Feed - Forum - Troubleshooting" href="https://www.raspberrypi.org/forums/app.php/feed/forum/28?sid=ab3b8a754e135e91d58599e2f04a26c5">	<link rel="alternate" type="application/atom+xml" title="Feed - Topic - PIR Motion sensor always outputting" href="https://www.raspberrypi.org/forums/app.php/feed/topic/176241?sid=ab3b8a754e135e91d58599e2f04a26c5">
+	
+
+<!--[if IE]><link rel="shortcut icon" href="./styles/rpi/theme/images/favicon.png"><![endif]-->
+<!-- <link rel="apple-touch-icon-precomposed" href="./styles/rpi/theme/images/apple-touch-icon-precomposed.gif"> -->
+<link rel="icon" href="https://www.raspberrypi.org/forums/styles/rpi/theme/images/favicon.png">
+<link rel="icon" sizes="16x16" href="https://www.raspberrypi.org/forums/styles/rpi/theme/images/favicon.png">
+
+	<link rel="canonical" href="https://www.raspberrypi.org/forums/viewtopic.php?t=176241">
+
+
+      <link rel="stylesheet" media="screen" href="./PIR Motion sensor always outputting - Raspberry Pi Forums_files/fonts-13704cc7.css" data-esi-styles="true">
+      <link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect">
+<link as="style" href="./PIR Motion sensor always outputting - Raspberry Pi Forums_files/css2" rel="preload">
+<link href="./PIR Motion sensor always outputting - Raspberry Pi Forums_files/css2" media="all" onload="this.media=&#39;all&#39;" rel="stylesheet">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;family=Rubik:wght@400;500;700&amp;display=swap" rel="stylesheet" /></noscript>
+
+
+      <script async="" src="./PIR Motion sensor always outputting - Raspberry Pi Forums_files/analytics.js"></script><script src="./PIR Motion sensor always outputting - Raspberry Pi Forums_files/fonts-2a57e7b768ee9966c9e3.js" data-esi-script="true"></script>
+    
+<link href="./PIR Motion sensor always outputting - Raspberry Pi Forums_files/font-awesome.min.css" rel="stylesheet" type="text/css" media="screen, projection">
+<link href="./PIR Motion sensor always outputting - Raspberry Pi Forums_files/legacy.min.css" rel="stylesheet">
+<link href="./PIR Motion sensor always outputting - Raspberry Pi Forums_files/stylesheet.css" rel="stylesheet" type="text/css" media="screen, projection">
+<link href="./PIR Motion sensor always outputting - Raspberry Pi Forums_files/colours_rpi.css" rel="stylesheet" type="text/css" media="screen, projection">
+<link href="./PIR Motion sensor always outputting - Raspberry Pi Forums_files/print.css" rel="stylesheet" type="text/css" media="print">
+
+
+
+
+
+
+<script src="chrome-extension://mooikfkahbdckldjjndioackbalphokd/assets/prompt.js"></script></head>
+
+<body id="phpbb" class="notouch section-viewtopic ltr section-forums hasjs">
+
+
+<div id="overall-wrap">
+  <a id="top" class="anchor" accesskey="t"></a>
+  
+      <link rel="stylesheet" media="screen" href="./PIR Motion sensor always outputting - Raspberry Pi Forums_files/header-23431392.css" data-esi-styles="true">
+      <header class="esi-header" data-esi-js-selector="header" data-nav-open="" id="rp-app-landmark-header">
+  <div class="esi-header__container">
+    <div class="esi-header__home-link">
+      <div class="esi-header__skipper">
+        <ul class="esi-header-skipper">
+    <li class="esi-header-skipper__item">
+      <a class="esi-header-skipper__link" data-event-action="click" data-event-category="Header: Skip links" data-event-label="Skip to main content" href="https://www.raspberrypi.org/forums/viewtopic.php?t=176241#rp-app-landmark-main">Skip to main content</a>
+    </li>
+    <li class="esi-header-skipper__item">
+      <a class="esi-header-skipper__link" data-event-action="click" data-event-category="Header: Skip links" data-event-label="Skip to footer" href="https://www.raspberrypi.org/forums/viewtopic.php?t=176241#rp-app-landmark-footer">Skip to footer</a>
+    </li>
+    <li class="esi-header-skipper__item">
+      <a class="esi-header-skipper__link" data-event-action="click" data-event-category="Header: Skip links" data-event-label="Accessbility statement and help" href="https://www.raspberrypi.org/accessibility/">Accessbility statement and help</a>
+    </li>
+</ul>
+
+      </div>
+
+      <a class="esi-header-home-link" aria-label="Raspberry Pi Home page" data-event-action="click" data-event-category="Header" data-event-label="Home link" href="https://www.raspberrypi.org/">
+  <svg class="esi-header-home-link__logo" height="75" viewBox="0 0 492.4 619.5" width="35" xml:space="preserve" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+    <path fill="#020203" d="M133.3,0c-3.2,0.1-6.6,1.5-10.5,4.5c-9.5-3.6-18.7-4.9-27,2.5c-12.7-1.6-16.9,1.7-20,5.7
+      C73,12.6,54.9,9.8,46.6,22c-20.9-2.4-27.5,12.1-20,25.7c-4.3,6.5-8.7,12.9,1.3,25.3c-3.5,6.9-1.3,14.4,7,23.5
+      c-2.2,9.7,2.1,16.6,9.9,21.9c-1.4,13.3,12.4,21,16.5,23.8c1.6,7.7,4.9,15,20.7,19.1c2.6,11.5,12.1,13.5,21.3,16
+      c-30.4,17.4-56.4,40.3-56.2,96.4l-4.4,7.8c-34.8,20.9-66.1,87.9-17.2,142.4c3.2,17.1,8.6,29.3,13.3,42.9
+      c7.1,54.6,53.8,80.2,66.1,83.2c18,13.5,37.2,26.4,63.2,35.3c24.5,24.9,51,34.4,77.7,34.3c0.4,0,0.8,0,1.2,0
+      c26.7,0,53.2-9.5,77.7-34.3c26-9,45.2-21.8,63.2-35.3c12.3-3,58.9-28.6,66.1-83.2c4.8-13.6,10.1-25.8,13.3-42.9
+      c49-54.5,17.7-121.5-17.2-142.4l-4.5-7.8c0.2-56.1-25.9-79-56.2-96.4c9.2-2.4,18.7-4.4,21.3-16c15.8-4,19.1-11.3,20.7-19.1
+      c4.1-2.8,17.9-10.5,16.5-23.8c7.7-5.3,12-12.2,9.9-21.9c8.3-9.1,10.5-16.6,7-23.5c10-12.4,5.6-18.8,1.3-25.3
+      c7.5-13.6,0.9-28.1-20-25.7c-8.3-12.2-26.4-9.4-29.2-9.4c-3.1-3.9-7.3-7.3-20-5.7c-8.2-7.4-17.5-6.1-27-2.5
+      c-11.3-8.8-18.8-1.7-27.3,0.9C328.6,1,325.4,7,318.7,9.5c-14.9-3.1-19.5,3.7-26.6,10.8l-0.5-0.2c-2.5-1.2-5.3-1.1-7.8,0.1v0
+      c-22.5,13.1-33.7,39.7-37.6,53.3c-4-13.7-15.1-40.3-37.6-53.3l-0.4-0.2c-2.5-1.1-5.4-1-7.8,0.3l-0.1,0.1
+      c-7.2-7.1-11.7-13.9-26.6-10.8c-6.7-2.5-9.8-8.5-23.5-4.1c-5.6-1.7-8.9-5.6-15-5.4L133.3,0z"></path>
+    <g fill="#6ABF4B">
+      <path d="M88.9,57.7c59.7,30.3,94.4,54.8,113.4,75.7c-9.7,38.4-60.5,40.2-79.1,39.1c3.8-1.7,7-3.8,8.1-7
+        c-4.7-3.3-21.2-0.3-32.7-6.7c4.4-0.9,6.5-1.8,8.6-5c-10.9-3.4-22.6-6.4-29.5-12c3.7,0,7.2,0.8,12.1-2.5C80,134,69.6,129.9,61.5,122
+        c5-0.1,10.5,0,12.1-1.9c-8.9-5.5-16.5-11.5-22.7-18.1c7.1,0.8,10,0.1,11.8-1.1c-6.8-6.8-15.3-12.6-19.4-21c5.2,1.8,10,2.5,13.5-0.2
+        c-2.3-5.1-12.1-8.1-17.8-20c5.5,0.5,11.4,1.2,12.5,0c-2.6-10.3-7-16.1-11.3-22.1c11.8-0.2,29.7,0,28.9-0.9l-7.3-7.4
+        c11.5-3.1,23.3,0.5,31.9,3.1c3.8-3-0.1-6.8-4.8-10.6c9.8,1.3,18.7,3.5,26.7,6.6c4.3-3.8-2.8-7.6-6.2-11.4
+        c15.2,2.8,21.6,6.8,28,10.8c4.6-4.4,0.3-8.1-2.9-11.9c11.4,4.2,17.3,9.5,23.5,14.9c2.1-2.8,5.3-4.8,1.4-11.6
+        c8.1,4.6,14.2,10,18.7,16.1c5-3.1,3-7.5,3-11.4c8.4,6.8,13.8,13.9,20.3,21c1.3-0.9,2.5-4.2,3.5-9.2c20.1,19.2,48.5,67.6,7.3,86.8
+        C177.3,93.9,135.4,73.2,88.9,57.7L88.9,57.7z"></path>
+      <path d="M405.1,57.7c-59.7,30.3-94.4,54.8-113.4,75.7c9.7,38.4,60.5,40.2,79.1,39.1c-3.8-1.7-7-3.8-8.1-7
+        c4.7-3.3,21.2-0.3,32.7-6.7c-4.4-0.9-6.5-1.8-8.6-5c10.9-3.4,22.6-6.4,29.5-12c-3.7,0-7.2,0.8-12.1-2.5c9.8-5.2,20.2-9.3,28.3-17.2
+        c-5-0.1-10.5,0-12.1-1.9c8.9-5.5,16.5-11.5,22.7-18.1c-7.1,0.8-10,0.1-11.8-1.1c6.8-6.8,15.3-12.6,19.4-21
+        c-5.2,1.8-10,2.5-13.5-0.2c2.3-5.1,12.1-8.1,17.8-20c-5.5,0.5-11.4,1.2-12.5,0c2.6-10.3,7-16.1,11.3-22.1
+        c-11.8-0.2-29.7,0-28.9-0.9l7.3-7.4c-11.5-3.1-23.4,0.5-31.9,3.1c-3.8-3,0.1-6.8,4.8-10.6c-9.8,1.3-18.7,3.5-26.7,6.6
+        c-4.3-3.8,2.8-7.6,6.2-11.4c-15.2,2.8-21.6,6.8-28,10.8c-4.6-4.4-0.3-8.1,2.9-11.9c-11.4,4.2-17.3,9.5-23.5,14.9
+        c-2.1-2.8-5.3-4.8-1.4-11.6c-8.1,4.6-14.2,10-18.7,16.1c-5-3.1-3-7.5-3-11.4c-8.4,6.8-13.8,13.9-20.3,21c-1.3-0.9-2.5-4.2-3.5-9.2
+        c-20.1,19.2-48.5,67.6-7.3,86.8C316.8,93.9,358.7,73.2,405.1,57.7L405.1,57.7z"></path>
+    </g>
+    <g fill="#C31C4A">
+      <path d="M319.2,449.1c0.2,35.9-31.6,65.1-71.1,65.3c-39.5,0.2-71.7-28.7-71.9-64.6c0-0.2,0-0.5,0-0.7 c-0.2-35.9,31.6-65.1,71.1-65.3c39.5-0.2,71.7,28.7,71.9,64.6C319.2,448.6,319.2,448.8,319.2,449.1z"></path>
+      <path d="M207.7,263.5c29.6,19.1,35,62.5,11.9,96.8c-23,34.3-65.7,46.7-95.4,27.6l0,0c-29.6-19.1-35-62.5-11.9-96.8 C135.4,256.8,178.1,244.4,207.7,263.5L207.7,263.5z"></path>
+      <path d="M287.7,260.1c-29.6,19.1-35,62.5-11.9,96.8c23,34.3,65.7,46.7,95.4,27.6l0,0c29.6-19.1,35-62.5,11.9-96.8 C360,253.3,317.3,241,287.7,260.1L287.7,260.1z"></path>
+      <path d="M61.5,295c32-8.4,10.8,130.3-15.2,119C17.6,391.3,8.4,324.8,61.5,295z"></path>
+      <path d="M431.1,293.3c-32-8.4-10.8,130.3,15.2,119C475,389.5,484.2,323.1,431.1,293.3L431.1,293.3z"></path>
+      <path d="M323.8,189.7c55.2-9.2,101.1,23.1,99.3,82.1C421.3,294.4,303.5,193.1,323.8,189.7z"></path>
+      <path d="M171.3,188c-55.2-9.2-101.1,23.1-99.3,82.1C73.9,292.7,191.7,191.3,171.3,188z"></path>
+      <path d="M247.4,174.2c-32.9-0.8-64.6,24.1-64.6,38.5c-0.1,17.6,26,35.6,64.9,36c39.6,0.3,64.9-14.4,65.1-32.5 C312.8,195.7,276.6,173.9,247.4,174.2L247.4,174.2z"></path>
+      <path d="M249.9,534.5c28.7-1.2,67.3,9.1,67.3,22.8c0.5,13.3-35,43.4-69.2,42.9c-35.5,1.5-70.3-28.7-69.9-39.1 C177.6,545.8,221.4,533.8,249.9,534.5L249.9,534.5z"></path>
+      <path d="M143.6,453.2c20.4,24.3,29.8,66.9,12.7,79.5c-16.1,9.6-55.4,5.6-83.2-33.8c-18.8-33.1-16.4-66.8-3.2-76.7 C89.7,410.3,120.1,426.3,143.6,453.2L143.6,453.2z"></path>
+      <path d="M349.5,445.5c-22.1,25.5-34.4,72.1-18.3,87.1c15.4,11.6,56.9,10,87.5-31.8c22.2-28.1,14.8-75,2.1-87.5 C401.9,398.9,374.8,417.3,349.5,445.5L349.5,445.5z"></path>
+    </g>
+  </svg>
+</a>
+    </div>
+
+    <div class="esi-header__toggle">
+      <button aria-label="Open Navigation" aria-pressed="false" class="esi-header-toggle" data-esi-js-selector="toggle" type="button">
+  <span class="esi-header-toggle__line"></span>
+  <span class="esi-header-toggle__line"></span>
+  <span class="esi-header-toggle__line"></span>
+</button>
+
+    </div>
+
+    <div class="esi-header__nav">
+      <nav aria-label="Navigation" class="esi-header-nav" data-esi-js-selector="nav" data-active-panel="">
+  <ul class="esi-header-nav__list">
+      <li class="esi-header-nav__item" data-esi-js-selector="nav-item" data-section="hardware">
+        <a class="esi-header-nav-link esi-header-nav-link--hardware" data-esi-js-selector="nav-link" data-event-action="click" data-event-category="Header: Navigation" data-event-label="Hardware" data-section="hardware" href="https://www.raspberrypi.org/products/">Hardware</a>
+
+
+        <div aria-expanded="false" aria-hidden="true" class="esi-header-nav__panel" data-section="hardware" data-esi-js-selector="nav-panel" role="navigation">
+          <div class="esi-header-nav-panel">
+  <div class="esi-header-nav-panel__container esi-header-nav-panel__container--hardware">
+    <div class="esi-header-nav-panel__inner">
+      <div class="esi-header-nav-panel__primary-cta">
+        <p class="esi-header-nav-panel__summary">
+          Low-cost, high-performance Raspberry&nbsp;Pi computers and accessories
+        </p>
+
+        <div class="esi-header-nav-panel__buttons">
+            <a class="sc-rp-button esi-header-nav-panel__button" data-event-action="click" data-event-category="Header: Hardware panel - button" data-event-label="Buy Raspberry Pi 4" href="https://www.raspberrypi.org/products/raspberry-pi-4-model-b/">Buy Raspberry&nbsp;Pi 4</a>
+            <a class="sc-rp-button esi-header-nav-panel__button" data-event-action="click" data-event-category="Header: Hardware panel - button" data-event-label="Buy Raspberry Pi 400" href="https://www.raspberrypi.org/products/raspberry-pi-400/">Buy Raspberry&nbsp;Pi 400</a>
+        </div>
+      </div>
+
+      <ul class="esi-header-nav-panel__list">
+          <li class="esi-header-nav-panel__item">
+            <a class="sc-rp-link esi-header-nav-panel__link" data-event-action="click" data-event-category="Header: Hardware panel - link" data-event-label="All products" href="https://www.raspberrypi.org/products/">
+              <svg class="esi-header-nav-panel__icon" fill="none" height="18" viewBox="0 0 11 18" width="11" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2 2.5L8.5 9L2 15.5" stroke="#004881" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+
+              <span class="esi-header-nav-panel__label">
+                All products
+              </span>
+</a>          </li>
+          <li class="esi-header-nav-panel__item">
+            <a class="sc-rp-link esi-header-nav-panel__link" data-event-action="click" data-event-category="Header: Hardware panel - link" data-event-label="For industry" href="https://www.raspberrypi.org/for-industry/">
+              <svg class="esi-header-nav-panel__icon" fill="none" height="18" viewBox="0 0 11 18" width="11" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2 2.5L8.5 9L2 15.5" stroke="#004881" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+
+              <span class="esi-header-nav-panel__label">
+                For industry
+              </span>
+</a>          </li>
+          <li class="esi-header-nav-panel__item">
+            <a class="sc-rp-link esi-header-nav-panel__link" data-event-action="click" data-event-category="Header: Hardware panel - link" data-event-label="Documentation" href="https://www.raspberrypi.org/documentation/">
+              <svg class="esi-header-nav-panel__icon" fill="none" height="18" viewBox="0 0 11 18" width="11" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2 2.5L8.5 9L2 15.5" stroke="#004881" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+
+              <span class="esi-header-nav-panel__label">
+                Documentation
+              </span>
+</a>          </li>
+          <li class="esi-header-nav-panel__item">
+            <a class="sc-rp-link esi-header-nav-panel__link" data-event-action="click" data-event-category="Header: Hardware panel - link" data-event-label="Forums" href="https://www.raspberrypi.org/forums/">
+              <svg class="esi-header-nav-panel__icon" fill="none" height="18" viewBox="0 0 11 18" width="11" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2 2.5L8.5 9L2 15.5" stroke="#004881" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+
+              <span class="esi-header-nav-panel__label">
+                Forums
+              </span>
+</a>          </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+        </div>
+      </li>
+      <li class="esi-header-nav__item" data-esi-js-selector="nav-item" data-section="software">
+        <a class="esi-header-nav-link esi-header-nav-link--software" data-esi-js-selector="nav-link" data-event-action="click" data-event-category="Header: Navigation" data-event-label="Software" data-section="software" href="https://www.raspberrypi.org/software/">Software</a>
+
+
+        <div aria-expanded="false" aria-hidden="true" class="esi-header-nav__panel" data-section="software" data-esi-js-selector="nav-panel" role="navigation">
+          <div class="esi-header-nav-panel">
+  <div class="esi-header-nav-panel__container esi-header-nav-panel__container--software">
+    <div class="esi-header-nav-panel__inner">
+      <div class="esi-header-nav-panel__primary-cta">
+        <p class="esi-header-nav-panel__summary">
+          Everything you need to get started with your Raspberry&nbsp;Pi computer
+        </p>
+
+        <div class="esi-header-nav-panel__buttons">
+            <a class="sc-rp-button esi-header-nav-panel__button" data-event-action="click" data-event-category="Header: Software panel - button" data-event-label="Our software" href="https://www.raspberrypi.org/software/">Our software</a>
+        </div>
+      </div>
+
+      <ul class="esi-header-nav-panel__list">
+          <li class="esi-header-nav-panel__item">
+            <a class="sc-rp-link esi-header-nav-panel__link" data-event-action="click" data-event-category="Header: Software panel - link" data-event-label="Raspberry Pi OS" href="https://www.raspberrypi.org/software/operating-systems/#raspberry-pi-os-32-bit">
+              <svg class="esi-header-nav-panel__icon" fill="none" height="18" viewBox="0 0 11 18" width="11" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2 2.5L8.5 9L2 15.5" stroke="#004881" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+
+              <span class="esi-header-nav-panel__label">
+                Raspberry&nbsp;Pi OS
+              </span>
+</a>          </li>
+          <li class="esi-header-nav-panel__item">
+            <a class="sc-rp-link esi-header-nav-panel__link" data-event-action="click" data-event-category="Header: Software panel - link" data-event-label="Raspberry Pi Desktop" href="https://www.raspberrypi.org/downloads/raspberry-pi-desktop/">
+              <svg class="esi-header-nav-panel__icon" fill="none" height="18" viewBox="0 0 11 18" width="11" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2 2.5L8.5 9L2 15.5" stroke="#004881" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+
+              <span class="esi-header-nav-panel__label">
+                Raspberry&nbsp;Pi Desktop
+              </span>
+</a>          </li>
+          <li class="esi-header-nav-panel__item">
+            <a class="sc-rp-link esi-header-nav-panel__link" data-event-action="click" data-event-category="Header: Software panel - link" data-event-label="Help" href="https://www.raspberrypi.org/help/">
+              <svg class="esi-header-nav-panel__icon" fill="none" height="18" viewBox="0 0 11 18" width="11" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2 2.5L8.5 9L2 15.5" stroke="#004881" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+
+              <span class="esi-header-nav-panel__label">
+                Help
+              </span>
+</a>          </li>
+          <li class="esi-header-nav-panel__item">
+            <a class="sc-rp-link esi-header-nav-panel__link" data-event-action="click" data-event-category="Header: Software panel - link" data-event-label="Forums" href="https://www.raspberrypi.org/forums/">
+              <svg class="esi-header-nav-panel__icon" fill="none" height="18" viewBox="0 0 11 18" width="11" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2 2.5L8.5 9L2 15.5" stroke="#004881" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+
+              <span class="esi-header-nav-panel__label">
+                Forums
+              </span>
+</a>          </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+        </div>
+      </li>
+      <li class="esi-header-nav__item" data-esi-js-selector="nav-item" data-section="publications">
+        <a class="esi-header-nav-link esi-header-nav-link--publications" data-esi-js-selector="nav-link" data-event-action="click" data-event-category="Header: Navigation" data-event-label="Books &amp; magazines" data-section="publications" href="https://www.raspberrypi.org/books-magazines/">Books &amp; magazines</a>
+
+
+        <div aria-expanded="false" aria-hidden="true" class="esi-header-nav__panel" data-section="publications" data-esi-js-selector="nav-panel" role="navigation">
+          <div class="esi-header-nav-panel">
+  <div class="esi-header-nav-panel__container esi-header-nav-panel__container--publications">
+    <div class="esi-header-nav-panel__inner">
+      <div class="esi-header-nav-panel__primary-cta">
+        <p class="esi-header-nav-panel__summary">
+          Books and magazines from Raspberry&nbsp;Pi Press
+        </p>
+
+        <div class="esi-header-nav-panel__buttons">
+            <a class="sc-rp-button esi-header-nav-panel__button" data-event-action="click" data-event-category="Header: Books &amp; magazines panel - button" data-event-label="Explore our titles" href="https://www.raspberrypi.org/books-magazines/">Explore our titles</a>
+        </div>
+      </div>
+
+      <ul class="esi-header-nav-panel__list">
+          <li class="esi-header-nav-panel__item">
+            <a class="sc-rp-link esi-header-nav-panel__link" data-event-action="click" data-event-category="Header: Books &amp; magazines panel - link" data-event-label="The MagPi" href="https://magpi.raspberrypi.org/">
+              <svg class="esi-header-nav-panel__icon" fill="none" height="18" viewBox="0 0 11 18" width="11" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2 2.5L8.5 9L2 15.5" stroke="#004881" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+
+              <span class="esi-header-nav-panel__label">
+                The MagPi
+              </span>
+</a>          </li>
+          <li class="esi-header-nav-panel__item">
+            <a class="sc-rp-link esi-header-nav-panel__link" data-event-action="click" data-event-category="Header: Books &amp; magazines panel - link" data-event-label="HackSpace" href="https://hackspace.raspberrypi.org/">
+              <svg class="esi-header-nav-panel__icon" fill="none" height="18" viewBox="0 0 11 18" width="11" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2 2.5L8.5 9L2 15.5" stroke="#004881" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+
+              <span class="esi-header-nav-panel__label">
+                HackSpace
+              </span>
+</a>          </li>
+          <li class="esi-header-nav-panel__item">
+            <a class="sc-rp-link esi-header-nav-panel__link" data-event-action="click" data-event-category="Header: Books &amp; magazines panel - link" data-event-label="Wireframe" href="https://wireframe.raspberrypi.org/">
+              <svg class="esi-header-nav-panel__icon" fill="none" height="18" viewBox="0 0 11 18" width="11" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2 2.5L8.5 9L2 15.5" stroke="#004881" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+
+              <span class="esi-header-nav-panel__label">
+                Wireframe
+              </span>
+</a>          </li>
+          <li class="esi-header-nav-panel__item">
+            <a class="sc-rp-link esi-header-nav-panel__link" data-event-action="click" data-event-category="Header: Books &amp; magazines panel - link" data-event-label="Custom PC" href="https://custompc.raspberrypi.org/">
+              <svg class="esi-header-nav-panel__icon" fill="none" height="18" viewBox="0 0 11 18" width="11" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2 2.5L8.5 9L2 15.5" stroke="#004881" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+
+              <span class="esi-header-nav-panel__label">
+                Custom PC
+              </span>
+</a>          </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+        </div>
+      </li>
+      <li class="esi-header-nav__item" data-esi-js-selector="nav-item" data-section="learn">
+        <a class="esi-header-nav-link esi-header-nav-link--learn" data-esi-js-selector="nav-link" data-event-action="click" data-event-category="Header: Navigation" data-event-label="Learn" data-section="learn" href="https://www.raspberrypi.org/learn/">Learn</a>
+
+
+        <div aria-expanded="false" aria-hidden="true" class="esi-header-nav__panel" data-section="learn" data-esi-js-selector="nav-panel" role="navigation">
+          <div class="esi-header-nav-panel">
+  <div class="esi-header-nav-panel__container esi-header-nav-panel__container--learn">
+    <div class="esi-header-nav-panel__inner">
+      <div class="esi-header-nav-panel__primary-cta">
+        <p class="esi-header-nav-panel__summary">
+          Free resources for young people to learn to code and become digital makers
+        </p>
+
+        <div class="esi-header-nav-panel__buttons">
+            <a class="sc-rp-button esi-header-nav-panel__button" data-event-action="click" data-event-category="Header: Learn panel - button" data-event-label="Learn at home" href="https://www.raspberrypi.org/learn/">Learn at home</a>
+        </div>
+      </div>
+
+      <ul class="esi-header-nav-panel__list">
+          <li class="esi-header-nav-panel__item">
+            <a class="sc-rp-link esi-header-nav-panel__link" data-event-action="click" data-event-category="Header: Learn panel - link" data-event-label="Guided coding projects" href="https://projects.raspberrypi.org/">
+              <svg class="esi-header-nav-panel__icon" fill="none" height="18" viewBox="0 0 11 18" width="11" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2 2.5L8.5 9L2 15.5" stroke="#004881" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+
+              <span class="esi-header-nav-panel__label">
+                Guided coding projects
+              </span>
+</a>          </li>
+          <li class="esi-header-nav-panel__item">
+            <a class="sc-rp-link esi-header-nav-panel__link" data-event-action="click" data-event-category="Header: Learn panel - link" data-event-label="Learn at a Code Club" href="https://codeclub.org/">
+              <svg class="esi-header-nav-panel__icon" fill="none" height="18" viewBox="0 0 11 18" width="11" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2 2.5L8.5 9L2 15.5" stroke="#004881" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+
+              <span class="esi-header-nav-panel__label">
+                Learn at a Code Club
+              </span>
+</a>          </li>
+          <li class="esi-header-nav-panel__item">
+            <a class="sc-rp-link esi-header-nav-panel__link" data-event-action="click" data-event-category="Header: Learn panel - link" data-event-label="Learn at a CoderDojo" href="https://coderdojo.com/">
+              <svg class="esi-header-nav-panel__icon" fill="none" height="18" viewBox="0 0 11 18" width="11" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2 2.5L8.5 9L2 15.5" stroke="#004881" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+
+              <span class="esi-header-nav-panel__label">
+                Learn at a CoderDojo
+              </span>
+</a>          </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+        </div>
+      </li>
+      <li class="esi-header-nav__item" data-esi-js-selector="nav-item" data-section="teach">
+        <a class="esi-header-nav-link esi-header-nav-link--teach" data-esi-js-selector="nav-link" data-event-action="click" data-event-category="Header: Navigation" data-event-label="Teach" data-section="teach" href="https://www.raspberrypi.org/teach/">Teach</a>
+
+
+        <div aria-expanded="false" aria-hidden="true" class="esi-header-nav__panel" data-section="teach" data-esi-js-selector="nav-panel" role="navigation">
+          <div class="esi-header-nav-panel">
+  <div class="esi-header-nav-panel__container esi-header-nav-panel__container--teach">
+    <div class="esi-header-nav-panel__inner">
+      <div class="esi-header-nav-panel__primary-cta">
+        <p class="esi-header-nav-panel__summary">
+          Free training, resources, and guidance to help you teach computing with confidence
+        </p>
+
+        <div class="esi-header-nav-panel__buttons">
+            <a class="sc-rp-button esi-header-nav-panel__button" data-event-action="click" data-event-category="Header: Teach panel - button" data-event-label="Support for teachers" href="https://www.raspberrypi.org/teach/">Support for teachers</a>
+        </div>
+      </div>
+
+      <ul class="esi-header-nav-panel__list">
+          <li class="esi-header-nav-panel__item">
+            <a class="sc-rp-link esi-header-nav-panel__link" data-event-action="click" data-event-category="Header: Teach panel - link" data-event-label="Teach Computing" href="https://teachcomputing.org/">
+              <svg class="esi-header-nav-panel__icon" fill="none" height="18" viewBox="0 0 11 18" width="11" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2 2.5L8.5 9L2 15.5" stroke="#004881" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+
+              <span class="esi-header-nav-panel__label">
+                Teach Computing
+              </span>
+</a>          </li>
+          <li class="esi-header-nav-panel__item">
+            <a class="sc-rp-link esi-header-nav-panel__link" data-event-action="click" data-event-category="Header: Teach panel - link" data-event-label="Start a Code Club" href="https://codeclub.org/en/start-a-code-club/">
+              <svg class="esi-header-nav-panel__icon" fill="none" height="18" viewBox="0 0 11 18" width="11" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2 2.5L8.5 9L2 15.5" stroke="#004881" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+
+              <span class="esi-header-nav-panel__label">
+                Start a Code Club
+              </span>
+</a>          </li>
+          <li class="esi-header-nav-panel__item">
+            <a class="sc-rp-link esi-header-nav-panel__link" data-event-action="click" data-event-category="Header: Teach panel - link" data-event-label="Online training courses" href="https://www.raspberrypi.org/training/online/">
+              <svg class="esi-header-nav-panel__icon" fill="none" height="18" viewBox="0 0 11 18" width="11" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2 2.5L8.5 9L2 15.5" stroke="#004881" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+
+              <span class="esi-header-nav-panel__label">
+                Online training courses
+              </span>
+</a>          </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+        </div>
+      </li>
+      <li class="esi-header-nav__item esi-header-nav__item--mobile-only" data-esi-js-selector="nav-item" data-section="forums">
+        <a class="esi-header-nav-link esi-header-nav-link--forums" data-esi-js-selector="nav-link" data-event-action="click" data-event-category="Header: Navigation" data-event-label="Forums" data-section="forums" href="https://www.raspberrypi.org/forums/">Forums</a>
+
+
+        <div aria-expanded="false" aria-hidden="true" class="esi-header-nav__panel" data-section="forums" data-esi-js-selector="nav-panel" role="navigation">
+          
+        </div>
+      </li>
+      <li class="esi-header-nav__item" data-esi-js-selector="nav-item" data-section="about">
+        <a class="esi-header-nav-link esi-header-nav-link--about" data-esi-js-selector="nav-link" data-event-action="click" data-event-category="Header: Navigation" data-event-label="About us" data-section="about" href="https://www.raspberrypi.org/about/">About us</a>
+
+
+        <div aria-expanded="false" aria-hidden="true" class="esi-header-nav__panel" data-section="about" data-esi-js-selector="nav-panel" role="navigation">
+          <div class="esi-header-nav-panel">
+  <div class="esi-header-nav-panel__container esi-header-nav-panel__container--about">
+    <div class="esi-header-nav-panel__inner">
+      <div class="esi-header-nav-panel__primary-cta">
+        <p class="esi-header-nav-panel__summary">
+          We work to put the power of computing and digital making into the hands of people all over the world
+        </p>
+
+        <div class="esi-header-nav-panel__buttons">
+            <a class="sc-rp-button esi-header-nav-panel__button" data-event-action="click" data-event-category="Header: About us panel - button" data-event-label="About us" href="https://www.raspberrypi.org/about/">About us</a>
+        </div>
+      </div>
+
+      <ul class="esi-header-nav-panel__list">
+          <li class="esi-header-nav-panel__item">
+            <a class="sc-rp-link esi-header-nav-panel__link" data-event-action="click" data-event-category="Header: About us panel - link" data-event-label="Donate" href="https://www.raspberrypi.org/donate/">
+              <svg class="esi-header-nav-panel__icon" fill="none" height="18" viewBox="0 0 11 18" width="11" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2 2.5L8.5 9L2 15.5" stroke="#004881" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+
+              <span class="esi-header-nav-panel__label">
+                Donate
+              </span>
+</a>          </li>
+          <li class="esi-header-nav-panel__item">
+            <a class="sc-rp-link esi-header-nav-panel__link" data-event-action="click" data-event-category="Header: About us panel - link" data-event-label="Support us" href="https://www.raspberrypi.org/support-us/">
+              <svg class="esi-header-nav-panel__icon" fill="none" height="18" viewBox="0 0 11 18" width="11" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2 2.5L8.5 9L2 15.5" stroke="#004881" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+
+              <span class="esi-header-nav-panel__label">
+                Support us
+              </span>
+</a>          </li>
+          <li class="esi-header-nav-panel__item">
+            <a class="sc-rp-link esi-header-nav-panel__link" data-event-action="click" data-event-category="Header: About us panel - link" data-event-label="Our supporters" href="https://www.raspberrypi.org/about/supporters/">
+              <svg class="esi-header-nav-panel__icon" fill="none" height="18" viewBox="0 0 11 18" width="11" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2 2.5L8.5 9L2 15.5" stroke="#004881" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+
+              <span class="esi-header-nav-panel__label">
+                Our supporters
+              </span>
+</a>          </li>
+          <li class="esi-header-nav-panel__item">
+            <a class="sc-rp-link esi-header-nav-panel__link" data-event-action="click" data-event-category="Header: About us panel - link" data-event-label="Blog" href="https://www.raspberrypi.org/blog/">
+              <svg class="esi-header-nav-panel__icon" fill="none" height="18" viewBox="0 0 11 18" width="11" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2 2.5L8.5 9L2 15.5" stroke="#004881" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+
+              <span class="esi-header-nav-panel__label">
+                Blog
+              </span>
+</a>          </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+        </div>
+      </li>
+  </ul>
+</nav>
+
+    </div>
+  </div>
+</header>
+
+
+      <script src="./PIR Motion sensor always outputting - Raspberry Pi Forums_files/header-d86e91bd63506fcf105c.js" data-esi-script="true"></script>
+    
+	<div id="wrap-head">
+		<div id="site-header">
+			<div class="chunk">
+				<ul id="site-menu">
+					<li data-skip-responsive="true" class="site-menu"><a href="https://www.raspberrypi.org/quick-start-guide">Quick Start Guide</a></li>
+<li data-skip-responsive="true" class="site-menu"><a href="https://www.raspberrypi.org/forums/app.php/help/faq?sid=ab3b8a754e135e91d58599e2f04a26c5" rel="help" title="Frequently Asked Questions">Forum FAQ</a></li>
+<li class="site-menu">
+	<a href="https://www.raspberrypi.org/forums/viewtopic.php?t=176241#" title="About">About</a>
+	<ul>
+		<li><a href="https://www.raspberrypi.org/about">About us</a></li>
+		<li><a href="https://www.raspberrypi.org/contact-us">Contact us</a></li>
+		<li><a href="https://www.raspberrypi.org/technical-help-and-resource-documents">Technical, help and resource documents</a></li>
+		<li><a href="https://www.raspberrypi.org/trademark-rules">Trademark rules</a></li>
+	</ul>
+</li>
+				</ul>
+			</div>
+		</div>
+
+		<div id="site-nav" role="navigation">
+			<div class="chunk">
+
+				
+				<div class="site-nav">
+
+					
+										<div id="site-search" role="search">
+						<form action="https://www.raspberrypi.org/forums/search.php?sid=ab3b8a754e135e91d58599e2f04a26c5" method="get">
+							<fieldset>
+								<input name="keywords" type="search" maxlength="128" title="Search for keywords" size="20" value="" placeholder="Search"><button type="submit" title="Search"><i class="fa fa-search"></i></button><input type="hidden" name="sid" value="ab3b8a754e135e91d58599e2f04a26c5">
+
+							</fieldset>
+						</form>
+					</div>
+					
+					<ul role="menubar">
+											<li class="font-icon rightside" data-skip-responsive="true"><a href="https://www.raspberrypi.org/forums/ucp.php?mode=login&amp;redirect=viewtopic.php%3Ft%3D176241&amp;sid=ab3b8a754e135e91d58599e2f04a26c5" title="Login" accesskey="x" role="menuitem"><i class="fa fa-power-off"></i><span class="nav-rh-2">Login</span></a></li>
+												<li class="font-icon rightside" data-skip-responsive="true"><a href="https://www.raspberrypi.org/forums/ucp.php?mode=register&amp;sid=ab3b8a754e135e91d58599e2f04a26c5" role="menuitem"><i class="fa fa-pencil-square-o"></i><span class="nav-rh-2">Register</span></a></li>
+																																		</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	
+	<a id="start_here" class="anchor"></a>
+		
+		
+		<!-- main element closes in overall_footer.html -->
+		<main id="rp-app-landmark-main">
+
+<div id="wrap-subhead">
+	<div class="chunk">
+		<div class="wrap-subhead">
+			<ul id="breadcrumbs" role="menubar">
+				<li class="font-icon responsive-menu dropdown-container" data-skip-responsive="true">
+  <a href="https://www.raspberrypi.org/forums/viewtopic.php?t=176241#" class="responsive-menu-link dropdown-trigger dropdown-toggle"><i class="fa fa-bars"></i></a>
+  <div class="dropdown hidden">
+    <div class="pointer"><div class="pointer-inner"></div></div>
+    <ul class="dropdown-contents" role="menu">
+      
+              <li class="separator"></li>
+                                <li class="font-icon icon-search-unanswered"><a href="https://www.raspberrypi.org/forums/search.php?search_id=unanswered&amp;sid=ab3b8a754e135e91d58599e2f04a26c5" role="menuitem"><i class="fa fa-file-o"></i>Unanswered topics</a></li>
+        <li class="font-icon icon-search-active"><a href="https://www.raspberrypi.org/forums/search.php?search_id=active_topics&amp;sid=ab3b8a754e135e91d58599e2f04a26c5" role="menuitem"><i class="fa fa-fire"></i>Active topics</a></li>
+            <li class="separator site-menu"></li>
+
+      <li data-skip-responsive="true" class="site-menu"><a href="https://www.raspberrypi.org/quick-start-guide">Quick Start Guide</a></li>
+<li data-skip-responsive="true" class="site-menu"><a href="https://www.raspberrypi.org/forums/app.php/help/faq?sid=ab3b8a754e135e91d58599e2f04a26c5" rel="help" title="Frequently Asked Questions">Forum FAQ</a></li>
+<li class="site-menu">
+	<a href="https://www.raspberrypi.org/forums/viewtopic.php?t=176241#" title="About">About</a>
+	<ul>
+		<li><a href="https://www.raspberrypi.org/about">About us</a></li>
+		<li><a href="https://www.raspberrypi.org/contact-us">Contact us</a></li>
+		<li><a href="https://www.raspberrypi.org/technical-help-and-resource-documents">Technical, help and resource documents</a></li>
+		<li><a href="https://www.raspberrypi.org/trademark-rules">Trademark rules</a></li>
+	</ul>
+</li>
+
+          </ul>
+  </div>
+</li>
+												<li class="breadcrumbs rightside">
+															<span class="crumb"><a href="https://www.raspberrypi.org/forums/index.php?sid=ab3b8a754e135e91d58599e2f04a26c5" accesskey="h" itemtype="http://data-vocabulary.org/Breadcrumb" itemscope="" data-navbar-reference="index" title="Board index"><i class="fa fa-home"></i><span>Board index</span></a></span>
+					                    <span class="crumb"><a href="https://www.raspberrypi.org/forums/viewforum.php?f=12&amp;sid=ab3b8a754e135e91d58599e2f04a26c5" itemtype="http://data-vocabulary.org/Breadcrumb" itemscope="" data-forum-id="12" title="Using the Raspberry Pi">Using the Raspberry Pi</a></span>
+                      <span class="crumb"><a href="https://www.raspberrypi.org/forums/viewforum.php?f=28&amp;sid=ab3b8a754e135e91d58599e2f04a26c5" itemtype="http://data-vocabulary.org/Breadcrumb" itemscope="" data-forum-id="28" title="Troubleshooting">Troubleshooting</a></span>
+  									</li>
+							</ul>
+
+		</div>
+
+		<div id="subhead-title">
+			<h2 class="topic-title"><a href="https://www.raspberrypi.org/forums/viewtopic.php?f=28&amp;t=176241&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">PIR Motion sensor always outputting</a></h2>
+			
+					</div>
+
+	</div>
+</div>
+
+<div id="wrap-body">
+	<div class="chunk">
+
+		
+		<div class="action-bar top">
+
+			<div class="buttons">
+				
+							<a href="https://www.raspberrypi.org/forums/posting.php?mode=reply&amp;f=28&amp;t=176241&amp;sid=ab3b8a754e135e91d58599e2f04a26c5" class="button font-icon" title="Post a reply">
+					<i class="fa fa-reply"></i>Post Reply				</a>
+			
+							</div>
+
+				<div class="dropdown-container dropdown-button-control topic-tools">
+		<span title="Topic tools" class="button icon-button tools-icon dropdown-trigger dropdown-select dropdown-toggle"><i class="fa fa-wrench"></i></span>
+		<div class="dropdown hidden">
+			<div class="pointer"><div class="pointer-inner"></div></div>
+			<ul class="dropdown-contents">
+																								<li class="font-icon icon-print"><a href="https://www.raspberrypi.org/forums/viewtopic.php?f=28&amp;t=176241&amp;sid=ab3b8a754e135e91d58599e2f04a26c5&amp;view=print" title="Print view" accesskey="p"><i class="fa fa-print"></i>Print view</a></li>							</ul>
+		</div>
+	</div>
+
+			
+							<div class="search-box" role="search">
+					<form method="get" id="topic-search" action="https://www.raspberrypi.org/forums/search.php?sid=ab3b8a754e135e91d58599e2f04a26c5">
+					<fieldset>
+						<input class="inputbox search" type="search" name="keywords" id="search_keywords" size="20" placeholder="Search this topic…">
+						<button class="button" type="submit" title="Search"><i class="fa fa-search"></i></button>
+						<input type="hidden" name="t" value="176241">
+<input type="hidden" name="sf" value="msgonly">
+<input type="hidden" name="sid" value="ab3b8a754e135e91d58599e2f04a26c5">
+
+					</fieldset>
+					</form>
+				</div>
+			
+							<div class="pagination">
+					58 posts
+											<ul>
+<li class="active"><span>1</span></li><li><a href="https://www.raspberrypi.org/forums/viewtopic.php?f=28&amp;t=176241&amp;sid=ab3b8a754e135e91d58599e2f04a26c5&amp;start=25" role="button">2</a></li><li><a href="https://www.raspberrypi.org/forums/viewtopic.php?f=28&amp;t=176241&amp;sid=ab3b8a754e135e91d58599e2f04a26c5&amp;start=50" role="button">3</a></li><li class="next"><a href="https://www.raspberrypi.org/forums/viewtopic.php?f=28&amp;t=176241&amp;sid=ab3b8a754e135e91d58599e2f04a26c5&amp;start=25" rel="next" role="button"><i class="fa fa-chevron-right"></i></a></li></ul>
+									</div>
+			
+			
+		</div>
+
+		
+		
+		
+											<div id="p1124110" class="post has-profile bg2">
+				<div class="inner">
+
+				<dl class="postprofile" id="profile1124110">
+					<dt class="no-profile-rank no-avatar">
+						<div class="avatar-container">
+																											</div>
+
+						
+						<a href="https://www.raspberrypi.org/forums/memberlist.php?mode=viewprofile&amp;u=224155&amp;sid=ab3b8a754e135e91d58599e2f04a26c5" class="username">jetpackjack</a>
+						
+					</dt>
+
+					
+					
+					
+				<dd class="profile-posts"><strong>Posts:</strong> <a href="https://www.raspberrypi.org/forums/search.php?author_id=224155&amp;sr=posts&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">11</a></dd>				<dd class="profile-joined"><strong>Joined:</strong> Tue Feb 28, 2017 7:53 am</dd>				
+				
+												
+												
+				</dl>
+
+				<div class="postbody">
+										<div id="post_content1124110">
+					
+					<h3 class="first"><a href="https://www.raspberrypi.org/forums/viewtopic.php?t=176241#p1124110">PIR Motion sensor always outputting</a></h3>
+
+				
+				
+															<ul class="posts-buttons">
+																																																									<li>
+									<a href="https://www.raspberrypi.org/forums/posting.php?mode=quote&amp;f=28&amp;p=1124110&amp;sid=ab3b8a754e135e91d58599e2f04a26c5" title="Reply with quote"><i class="fa fa-quote-left"></i><span>Quote</span></a>
+								</li>
+																				</ul>
+									
+				
+					
+					<p class="author"><a href="https://www.raspberrypi.org/forums/viewtopic.php?p=1124110&amp;sid=ab3b8a754e135e91d58599e2f04a26c5#p1124110">Sat Mar 04, 2017 11:54 am</a> </p>
+
+					
+					
+					
+					<div class="content">Hi Everyone,<br>
+<br>
+I have been following this tutorial online:<br>
+<br>
+<a href="https://diyhacking.com/raspberry-pi-gpio-control/#comment-4982" class="postlink">https://diyhacking.com/raspberry-pi-gpi ... mment-4982</a><br>
+<br>
+Everything is connected exactly as it should and I have followed the instructions to the letter. However I constantly get 'Intruder Detected' from the LXTerminal. Weirdly, the centre cable on the PIR had fallen out on one of my tests and when I ran the script it did show 'No Intruder', however if I ran my hand in front of the sensor it didn't detect but when i put my hand behind the sensor...it did.<br>
+<br>
+Does anyone have any idea what I may be doing wrong?<br>
+<br>
+Thanks,<br>
+JPJ</div>
+
+					
+															
+															
+										</div>
+
+				</div>
+
+				</div>
+											</div>
+
+			<hr class="divider">
+														<div id="p1124164" class="post has-profile bg1">
+				<div class="inner">
+
+				<dl class="postprofile" id="profile1124164">
+					<dt class="no-profile-rank no-avatar">
+						<div class="avatar-container">
+																											</div>
+
+						
+						<a href="https://www.raspberrypi.org/forums/memberlist.php?mode=viewprofile&amp;u=215623&amp;sid=ab3b8a754e135e91d58599e2f04a26c5" class="username">Texas-Mark</a>
+						
+					</dt>
+
+					
+					
+					
+				<dd class="profile-posts"><strong>Posts:</strong> <a href="https://www.raspberrypi.org/forums/search.php?author_id=215623&amp;sr=posts&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">100</a></dd>				<dd class="profile-joined"><strong>Joined:</strong> Wed Dec 28, 2016 3:30 pm</dd>				
+				
+												
+												
+				</dl>
+
+				<div class="postbody">
+										<div id="post_content1124164">
+					
+					<h3><a href="https://www.raspberrypi.org/forums/viewtopic.php?t=176241#p1124164">Re: PIR Motion sensor always outputting</a></h3>
+
+				
+				
+															<ul class="posts-buttons">
+																																																									<li>
+									<a href="https://www.raspberrypi.org/forums/posting.php?mode=quote&amp;f=28&amp;p=1124164&amp;sid=ab3b8a754e135e91d58599e2f04a26c5" title="Reply with quote"><i class="fa fa-quote-left"></i><span>Quote</span></a>
+								</li>
+																				</ul>
+									
+				
+					
+					<p class="author"><a href="https://www.raspberrypi.org/forums/viewtopic.php?p=1124164&amp;sid=ab3b8a754e135e91d58599e2f04a26c5#p1124164">Sat Mar 04, 2017 2:33 pm</a> </p>
+
+					
+					
+					
+					<div class="content">Are you using  5V or 3.3V to power it? Be sure to use the 5V line as it has a 3V regulator and it will act crazy if powered from 3.3V<br>
+<br>
+Make sure both adjustment pots are turned fully CCW as a starting point. <br>
+<br>
+Are you saying it was saying intruder detected when the signal line was still disconnected? if so, you have something wired wrong or a code issue. Post your code.</div>
+
+					
+															
+															
+										</div>
+
+				</div>
+
+				</div>
+											</div>
+
+			<hr class="divider">
+														<div id="p1124242" class="post has-profile bg2">
+				<div class="inner">
+
+				<dl class="postprofile" id="profile1124242">
+					<dt class="no-profile-rank no-avatar">
+						<div class="avatar-container">
+																											</div>
+
+						
+						<a href="https://www.raspberrypi.org/forums/memberlist.php?mode=viewprofile&amp;u=224155&amp;sid=ab3b8a754e135e91d58599e2f04a26c5" class="username">jetpackjack</a>
+						
+					</dt>
+
+					
+					
+					
+				<dd class="profile-posts"><strong>Posts:</strong> <a href="https://www.raspberrypi.org/forums/search.php?author_id=224155&amp;sr=posts&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">11</a></dd>				<dd class="profile-joined"><strong>Joined:</strong> Tue Feb 28, 2017 7:53 am</dd>				
+				
+												
+												
+				</dl>
+
+				<div class="postbody">
+										<div id="post_content1124242">
+					
+					<h3><a href="https://www.raspberrypi.org/forums/viewtopic.php?t=176241#p1124242">Re: PIR Motion sensor always outputting</a></h3>
+
+				
+				
+															<ul class="posts-buttons">
+																																																									<li>
+									<a href="https://www.raspberrypi.org/forums/posting.php?mode=quote&amp;f=28&amp;p=1124242&amp;sid=ab3b8a754e135e91d58599e2f04a26c5" title="Reply with quote"><i class="fa fa-quote-left"></i><span>Quote</span></a>
+								</li>
+																				</ul>
+									
+				
+					
+					<p class="author"><a href="https://www.raspberrypi.org/forums/viewtopic.php?p=1124242&amp;sid=ab3b8a754e135e91d58599e2f04a26c5#p1124242">Sat Mar 04, 2017 4:36 pm</a> </p>
+
+					
+					
+					
+					<div class="content"><blockquote><div><cite>Texas-Mark wrote:</cite>Are you using  5V or 3.3V to power it? Be sure to use the 5V line as it has a 3V regulator and it will act crazy if powered from 3.3V<br>
+<br>
+Make sure both adjustment pots are turned fully CCW as a starting point. <br>
+<br>
+Are you saying it was saying intruder detected when the signal line was still disconnected? if so, you have something wired wrong or a code issue. Post your code.</div></blockquote>
+
+Thanks for coming back to me Mark. Yes the power is coming from pin 2 on the GPIO so it is 5V. I have the dials on PIR both turned to the farthest point CCW. <br>
+<br>
+When I unplug the output cable (the centre pin on the PIR sensor) it runs as 'No Intruder', however if I touch the breadboard it will get a quick 'Intruder Alert' - could be interference I suppose. Here's my code:<br>
+
+<div class="codebox"><p>Code: <a href="https://www.raspberrypi.org/forums/viewtopic.php?t=176241#" onclick="selectCode(this); return false;">Select all</a></p><pre><code>import RPi.GPIO as GPIO
+import time
+GPIO.setwarnings(False)
+GPIO.setmode(GPIO.BOARD)
+GPIO.setup(11, GPIO.IN)         #Read output from PIR motion sensor
+GPIO.setup(3, GPIO.OUT)         #LED output pin
+while True:
+       i=GPIO.input(11)
+       if i==0:                 #When output from motion sensor is LOW
+             print "No intruders",i
+             GPIO.output(3, 0)  #Turn OFF LED
+             time.sleep(0.1)
+       elif i==1:               #When output from motion sensor is HIGH
+             print "Intruder detected",i
+             GPIO.output(3, 1)  #Turn ON LED
+             time.sleep(0.1)</code></pre></div></div>
+
+					
+															
+															
+										</div>
+
+				</div>
+
+				</div>
+											</div>
+
+			<hr class="divider">
+														<div id="p1124364" class="post has-profile bg1">
+				<div class="inner">
+
+				<dl class="postprofile" id="profile1124364">
+					<dt class="no-profile-rank no-avatar">
+						<div class="avatar-container">
+																											</div>
+
+						
+						<a href="https://www.raspberrypi.org/forums/memberlist.php?mode=viewprofile&amp;u=215623&amp;sid=ab3b8a754e135e91d58599e2f04a26c5" class="username">Texas-Mark</a>
+						
+					</dt>
+
+					
+					
+					
+				<dd class="profile-posts"><strong>Posts:</strong> <a href="https://www.raspberrypi.org/forums/search.php?author_id=215623&amp;sr=posts&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">100</a></dd>				<dd class="profile-joined"><strong>Joined:</strong> Wed Dec 28, 2016 3:30 pm</dd>				
+				
+												
+												
+				</dl>
+
+				<div class="postbody">
+										<div id="post_content1124364">
+					
+					<h3><a href="https://www.raspberrypi.org/forums/viewtopic.php?t=176241#p1124364">Re: PIR Motion sensor always outputting</a></h3>
+
+				
+				
+															<ul class="posts-buttons">
+																																																									<li>
+									<a href="https://www.raspberrypi.org/forums/posting.php?mode=quote&amp;f=28&amp;p=1124364&amp;sid=ab3b8a754e135e91d58599e2f04a26c5" title="Reply with quote"><i class="fa fa-quote-left"></i><span>Quote</span></a>
+								</li>
+																				</ul>
+									
+				
+					
+					<p class="author"><a href="https://www.raspberrypi.org/forums/viewtopic.php?p=1124364&amp;sid=ab3b8a754e135e91d58599e2f04a26c5#p1124364">Sat Mar 04, 2017 8:00 pm</a> </p>
+
+					
+					
+					
+					<div class="content">Two suggestions assuming everything is wired up correctly<br>
+1. Set your GPIO input pin to be pulled down. That may prevent any false readings when nothing is connected.<br>
+2. Add some bigger delays in there as the PIR (depending on how it's jumpered) will output a detection for a few seconds after the motion is gone. Here is the code I use that works. Of course you  need to change the pin numbers. I used this just to test mine when I first got it. <br>
+<br>
+
+<div class="codebox"><p>Code: <a href="https://www.raspberrypi.org/forums/viewtopic.php?t=176241#" onclick="selectCode(this); return false;">Select all</a></p><pre><code>import RPi.GPIO as GPIO
+import time
+GPIO.setmode(GPIO.BCM)
+GPIO.setwarnings(False)
+
+pir_sensor = 21 #GPIO pin 21
+led = 17 #GPIO pin 17
+
+GPIO.setup(pir_sensor, GPIO.IN, GPIO.PUD_DOWN)
+
+current_state = 0
+GPIO.setup(led,GPIO.OUT)
+
+while True:
+    try:
+        time.sleep(0.1)
+        current_state = GPIO.input(pir_sensor)
+        if current_state == 1:
+          print("GPIO pin %s is %s" % (pir_sensor, current_state)) # motion detected
+          GPIO.output(led,True) #Turn on LED
+          time.sleep(2) # leave LED on for 2 seconds
+          GPIO.output(led,False) #turn off LED
+          time.sleep(4) # wait 4 seconds for PIR to reset. 
+    except KeyboardInterrupt:
+        GPIO.cleanup()
+        </code></pre></div></div>
+
+					
+															
+															
+										</div>
+
+				</div>
+
+				</div>
+											</div>
+
+			<hr class="divider">
+														<div id="p1124398" class="post has-profile bg2">
+				<div class="inner">
+
+				<dl class="postprofile" id="profile1124398">
+					<dt class="no-profile-rank no-avatar">
+						<div class="avatar-container">
+																											</div>
+
+						
+						<a href="https://www.raspberrypi.org/forums/memberlist.php?mode=viewprofile&amp;u=224155&amp;sid=ab3b8a754e135e91d58599e2f04a26c5" class="username">jetpackjack</a>
+						
+					</dt>
+
+					
+					
+					
+				<dd class="profile-posts"><strong>Posts:</strong> <a href="https://www.raspberrypi.org/forums/search.php?author_id=224155&amp;sr=posts&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">11</a></dd>				<dd class="profile-joined"><strong>Joined:</strong> Tue Feb 28, 2017 7:53 am</dd>				
+				
+												
+												
+				</dl>
+
+				<div class="postbody">
+										<div id="post_content1124398">
+					
+					<h3><a href="https://www.raspberrypi.org/forums/viewtopic.php?t=176241#p1124398">Re: PIR Motion sensor always outputting</a></h3>
+
+				
+				
+															<ul class="posts-buttons">
+																																																									<li>
+									<a href="https://www.raspberrypi.org/forums/posting.php?mode=quote&amp;f=28&amp;p=1124398&amp;sid=ab3b8a754e135e91d58599e2f04a26c5" title="Reply with quote"><i class="fa fa-quote-left"></i><span>Quote</span></a>
+								</li>
+																				</ul>
+									
+				
+					
+					<p class="author"><a href="https://www.raspberrypi.org/forums/viewtopic.php?p=1124398&amp;sid=ab3b8a754e135e91d58599e2f04a26c5#p1124398">Sat Mar 04, 2017 9:03 pm</a> </p>
+
+					
+					
+					
+					<div class="content">hmm no good unfortunately. When I run the script I don't get any readings and the light is solid throughout. Can I just check this is right:<br>
+<br>
+I have a file called detection.py which I have stored in the root folder. Then I call it through LXTerminal with python ./detection.py<br>
+<br>
+Is that correct?<br>
+<br>
+Here is a picture of my set up. I moved the wires so it correlated with your code.<br>
+<br>
+<img src="./PIR Motion sensor always outputting - Raspberry Pi Forums_files/XOUdmj0.jpg" class="postimage" alt="Image"></div>
+
+					
+															
+															
+										</div>
+
+				</div>
+
+				</div>
+											</div>
+
+			<hr class="divider">
+														<div id="p1124407" class="post has-profile bg1">
+				<div class="inner">
+
+				<dl class="postprofile" id="profile1124407">
+					<dt class="no-profile-rank no-avatar">
+						<div class="avatar-container">
+																											</div>
+
+						
+						<a href="https://www.raspberrypi.org/forums/memberlist.php?mode=viewprofile&amp;u=29448&amp;sid=ab3b8a754e135e91d58599e2f04a26c5" class="username">gordon77</a>
+						
+					</dt>
+
+					
+					
+					
+				<dd class="profile-posts"><strong>Posts:</strong> <a href="https://www.raspberrypi.org/forums/search.php?author_id=29448&amp;sr=posts&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">5436</a></dd>				<dd class="profile-joined"><strong>Joined:</strong> Sun Aug 05, 2012 3:12 pm</dd>				
+				
+												
+												
+				</dl>
+
+				<div class="postbody">
+										<div id="post_content1124407">
+					
+					<h3><a href="https://www.raspberrypi.org/forums/viewtopic.php?t=176241#p1124407">Re: PIR Motion sensor always outputting</a></h3>
+
+				
+				
+															<ul class="posts-buttons">
+																																																									<li>
+									<a href="https://www.raspberrypi.org/forums/posting.php?mode=quote&amp;f=28&amp;p=1124407&amp;sid=ab3b8a754e135e91d58599e2f04a26c5" title="Reply with quote"><i class="fa fa-quote-left"></i><span>Quote</span></a>
+								</li>
+																				</ul>
+									
+				
+					
+					<p class="author"><a href="https://www.raspberrypi.org/forums/viewtopic.php?p=1124407&amp;sid=ab3b8a754e135e91d58599e2f04a26c5#p1124407">Sat Mar 04, 2017 9:15 pm</a> </p>
+
+					
+					
+					
+					<div class="content">Your wiring to pins appears wrong, gpio 21 is physical pin 40, gpio17 is physical pin 11<br>
+<br>
+<a href="https://pinout.xyz/" class="postlink">https://pinout.xyz/</a></div>
+
+					
+															
+															
+										</div>
+
+				</div>
+
+				</div>
+											</div>
+
+			<hr class="divider">
+														<div id="p1124558" class="post has-profile bg2">
+				<div class="inner">
+
+				<dl class="postprofile" id="profile1124558">
+					<dt class="no-profile-rank no-avatar">
+						<div class="avatar-container">
+																											</div>
+
+						
+						<a href="https://www.raspberrypi.org/forums/memberlist.php?mode=viewprofile&amp;u=224155&amp;sid=ab3b8a754e135e91d58599e2f04a26c5" class="username">jetpackjack</a>
+						
+					</dt>
+
+					
+					
+					
+				<dd class="profile-posts"><strong>Posts:</strong> <a href="https://www.raspberrypi.org/forums/search.php?author_id=224155&amp;sr=posts&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">11</a></dd>				<dd class="profile-joined"><strong>Joined:</strong> Tue Feb 28, 2017 7:53 am</dd>				
+				
+												
+												
+				</dl>
+
+				<div class="postbody">
+										<div id="post_content1124558">
+					
+					<h3><a href="https://www.raspberrypi.org/forums/viewtopic.php?t=176241#p1124558">Re: PIR Motion sensor always outputting</a></h3>
+
+				
+				
+															<ul class="posts-buttons">
+																																																									<li>
+									<a href="https://www.raspberrypi.org/forums/posting.php?mode=quote&amp;f=28&amp;p=1124558&amp;sid=ab3b8a754e135e91d58599e2f04a26c5" title="Reply with quote"><i class="fa fa-quote-left"></i><span>Quote</span></a>
+								</li>
+																				</ul>
+									
+				
+					
+					<p class="author"><a href="https://www.raspberrypi.org/forums/viewtopic.php?p=1124558&amp;sid=ab3b8a754e135e91d58599e2f04a26c5#p1124558">Sun Mar 05, 2017 6:53 am</a> </p>
+
+					
+					
+					
+					<div class="content"><blockquote><div><cite>gordon77 wrote:</cite>Your wiring to pins appears wrong, gpio 21 is physical pin 40, gpio17 is physical pin 11<br>
+<br>
+<a href="https://pinout.xyz/" class="postlink">https://pinout.xyz/</a></div></blockquote>
+
+Thank you, it was pin numbers in the last code so I assumed the same. I changed them over but I get a positive output again, much like the last - every 4 seconds the light flashes and I get 'GPIO Pin 21 is 1'. Could it be a faulty PIR?</div>
+
+					
+															
+															
+										</div>
+
+				</div>
+
+				</div>
+											</div>
+
+			<hr class="divider">
+														<div id="p1124628" class="post has-profile bg1">
+				<div class="inner">
+
+				<dl class="postprofile" id="profile1124628">
+					<dt class="no-profile-rank no-avatar">
+						<div class="avatar-container">
+																											</div>
+
+						
+						<a href="https://www.raspberrypi.org/forums/memberlist.php?mode=viewprofile&amp;u=29448&amp;sid=ab3b8a754e135e91d58599e2f04a26c5" class="username">gordon77</a>
+						
+					</dt>
+
+					
+					
+					
+				<dd class="profile-posts"><strong>Posts:</strong> <a href="https://www.raspberrypi.org/forums/search.php?author_id=29448&amp;sr=posts&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">5436</a></dd>				<dd class="profile-joined"><strong>Joined:</strong> Sun Aug 05, 2012 3:12 pm</dd>				
+				
+												
+												
+				</dl>
+
+				<div class="postbody">
+										<div id="post_content1124628">
+					
+					<h3><a href="https://www.raspberrypi.org/forums/viewtopic.php?t=176241#p1124628">Re: PIR Motion sensor always outputting</a></h3>
+
+				
+				
+															<ul class="posts-buttons">
+																																																									<li>
+									<a href="https://www.raspberrypi.org/forums/posting.php?mode=quote&amp;f=28&amp;p=1124628&amp;sid=ab3b8a754e135e91d58599e2f04a26c5" title="Reply with quote"><i class="fa fa-quote-left"></i><span>Quote</span></a>
+								</li>
+																				</ul>
+									
+				
+					
+					<p class="author"><a href="https://www.raspberrypi.org/forums/viewtopic.php?p=1124628&amp;sid=ab3b8a754e135e91d58599e2f04a26c5#p1124628">Sun Mar 05, 2017 11:04 am</a> </p>
+
+					
+					
+					
+					<div class="content">Can we see a photo of the setup now ?</div>
+
+					
+															
+															
+										</div>
+
+				</div>
+
+				</div>
+											</div>
+
+			<hr class="divider">
+														<div id="p1124632" class="post has-profile bg2">
+				<div class="inner">
+
+				<dl class="postprofile" id="profile1124632">
+					<dt class="no-profile-rank no-avatar">
+						<div class="avatar-container">
+																											</div>
+
+						
+						<a href="https://www.raspberrypi.org/forums/memberlist.php?mode=viewprofile&amp;u=71930&amp;sid=ab3b8a754e135e91d58599e2f04a26c5" class="username">pcmanbob</a>
+						
+					</dt>
+
+					
+					
+					
+				<dd class="profile-posts"><strong>Posts:</strong> <a href="https://www.raspberrypi.org/forums/search.php?author_id=71930&amp;sr=posts&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">10647</a></dd>				<dd class="profile-joined"><strong>Joined:</strong> Fri May 31, 2013 9:28 pm</dd>				
+				
+																			<dd class="profile-custom-field profile-phpbb_location"><strong>Location:</strong> Mansfield UK</dd>
+													
+												
+				</dl>
+
+				<div class="postbody">
+										<div id="post_content1124632">
+					
+					<h3><a href="https://www.raspberrypi.org/forums/viewtopic.php?t=176241#p1124632">Re: PIR Motion sensor always outputting</a></h3>
+
+				
+				
+															<ul class="posts-buttons">
+																																																									<li>
+									<a href="https://www.raspberrypi.org/forums/posting.php?mode=quote&amp;f=28&amp;p=1124632&amp;sid=ab3b8a754e135e91d58599e2f04a26c5" title="Reply with quote"><i class="fa fa-quote-left"></i><span>Quote</span></a>
+								</li>
+																				</ul>
+									
+				
+					
+					<p class="author"><a href="https://www.raspberrypi.org/forums/viewtopic.php?p=1124632&amp;sid=ab3b8a754e135e91d58599e2f04a26c5#p1124632">Sun Mar 05, 2017 11:14 am</a> </p>
+
+					
+					
+					
+					<div class="content">Hi.<br>
+<br>
+looking at your image it would appear that you have power and Gnd reversed on the PIR.<br>
+<br>
+<img src="./PIR Motion sensor always outputting - Raspberry Pi Forums_files/7V53839.jpg" class="postimage" alt="Image"><br>
+this was taken from the manual for the PIR and is how I wired mine which works fine.<br>
+all the wiring info on the web site you linked to shows it reversed.</div>
+
+					
+															
+															<div id="sig1124632" class="signature"><span style="font-size: 90%; line-height: normal"> We want information… information… information........................no information no help</span><br>
+<span style="font-size: 90%; line-height: normal">The use of crystal balls &amp; mind reading are not supported </span></div>
+										</div>
+
+				</div>
+
+				</div>
+											</div>
+
+			<hr class="divider">
+														<div id="p1124639" class="post has-profile bg1">
+				<div class="inner">
+
+				<dl class="postprofile" id="profile1124639">
+					<dt class="no-profile-rank has-avatar">
+						<div class="avatar-container">
+																						<a href="https://www.raspberrypi.org/forums/memberlist.php?mode=viewprofile&amp;u=73731&amp;sid=ab3b8a754e135e91d58599e2f04a26c5" class="avatar"><img class="avatar" src="./PIR Motion sensor always outputting - Raspberry Pi Forums_files/73731.jpg" width="89" height="90" alt="User avatar"></a>																				</div>
+
+						
+						<a href="https://www.raspberrypi.org/forums/memberlist.php?mode=viewprofile&amp;u=73731&amp;sid=ab3b8a754e135e91d58599e2f04a26c5" class="username">DougieLawson</a>
+						
+					</dt>
+
+					
+					
+					
+				<dd class="profile-posts"><strong>Posts:</strong> <a href="https://www.raspberrypi.org/forums/search.php?author_id=73731&amp;sr=posts&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">40769</a></dd>				<dd class="profile-joined"><strong>Joined:</strong> Sun Jun 16, 2013 11:19 pm</dd>				
+				
+																												<dd class="profile-custom-field profile-phpbb_location"><strong>Location:</strong> A small cave in deepest darkest Basingstoke, UK</dd>
+																						
+													<dd class="profile-contact">
+						<strong>Contact:</strong>
+												<a class="contact-icon contact-icon-phpbb_website" href="https://twitter.com/DougieLawson" title="Website">Website
+						</a>
+												<a class="contact-icon contact-icon-phpbb_twitter" href="https://twitter.com/DougieLawson" title="Twitter">Twitter
+						</a>
+											</dd>
+								
+				</dl>
+
+				<div class="postbody">
+										<div id="post_content1124639">
+					
+					<h3><a href="https://www.raspberrypi.org/forums/viewtopic.php?t=176241#p1124639">Re: PIR Motion sensor always outputting</a></h3>
+
+				
+				
+															<ul class="posts-buttons">
+																																																									<li>
+									<a href="https://www.raspberrypi.org/forums/posting.php?mode=quote&amp;f=28&amp;p=1124639&amp;sid=ab3b8a754e135e91d58599e2f04a26c5" title="Reply with quote"><i class="fa fa-quote-left"></i><span>Quote</span></a>
+								</li>
+																				</ul>
+									
+				
+					
+					<p class="author"><a href="https://www.raspberrypi.org/forums/viewtopic.php?p=1124639&amp;sid=ab3b8a754e135e91d58599e2f04a26c5#p1124639">Sun Mar 05, 2017 11:21 am</a> </p>
+
+					
+					
+					
+					<div class="content"><blockquote><div><cite>pcmanbob wrote:</cite>looking at your image it would appear that you have power and Gnd reversed on the PIR.</div></blockquote>
+If that's the case may it rest-in-peace since reversing Vcc and GND is the best way to 100% destroy any electronics.</div>
+
+					
+															
+															<div id="sig1124639" class="signature">Any language using left-hand whitespace for syntax is ridiculous<br>
+<br>
+Any DMs sent on Twitter will be answered next month.<br>
+Fake doctors - are all on my foes list.<br>
+<br>
+Any requirement to use a crystal ball or mind reading will result in me ignoring your question.</div>
+										</div>
+
+				</div>
+
+				</div>
+											</div>
+
+			<hr class="divider">
+														<div id="p1124642" class="post has-profile bg2">
+				<div class="inner">
+
+				<dl class="postprofile" id="profile1124642">
+					<dt class="no-profile-rank no-avatar">
+						<div class="avatar-container">
+																											</div>
+
+						
+						<a href="https://www.raspberrypi.org/forums/memberlist.php?mode=viewprofile&amp;u=29448&amp;sid=ab3b8a754e135e91d58599e2f04a26c5" class="username">gordon77</a>
+						
+					</dt>
+
+					
+					
+					
+				<dd class="profile-posts"><strong>Posts:</strong> <a href="https://www.raspberrypi.org/forums/search.php?author_id=29448&amp;sr=posts&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">5436</a></dd>				<dd class="profile-joined"><strong>Joined:</strong> Sun Aug 05, 2012 3:12 pm</dd>				
+				
+												
+												
+				</dl>
+
+				<div class="postbody">
+										<div id="post_content1124642">
+					
+					<h3><a href="https://www.raspberrypi.org/forums/viewtopic.php?t=176241#p1124642">Re: PIR Motion sensor always outputting</a></h3>
+
+				
+				
+															<ul class="posts-buttons">
+																																																									<li>
+									<a href="https://www.raspberrypi.org/forums/posting.php?mode=quote&amp;f=28&amp;p=1124642&amp;sid=ab3b8a754e135e91d58599e2f04a26c5" title="Reply with quote"><i class="fa fa-quote-left"></i><span>Quote</span></a>
+								</li>
+																				</ul>
+									
+				
+					
+					<p class="author"><a href="https://www.raspberrypi.org/forums/viewtopic.php?p=1124642&amp;sid=ab3b8a754e135e91d58599e2f04a26c5#p1124642">Sun Mar 05, 2017 11:25 am</a> </p>
+
+					
+					
+					
+					<div class="content">With a bit of luck the protection diode on the board will have saved it..<br>
+<br>
+<a href="https://learn.adafruit.com/pir-passive-infrared-proximity-motion-sensor/" class="postlink">https://learn.adafruit.com/pir-passive- ... on-sensor/</a></div>
+
+					
+															
+															
+										</div>
+
+				</div>
+
+				</div>
+											</div>
+
+			<hr class="divider">
+														<div id="p1124647" class="post has-profile bg1">
+				<div class="inner">
+
+				<dl class="postprofile" id="profile1124647">
+					<dt class="no-profile-rank no-avatar">
+						<div class="avatar-container">
+																											</div>
+
+						
+						<a href="https://www.raspberrypi.org/forums/memberlist.php?mode=viewprofile&amp;u=71930&amp;sid=ab3b8a754e135e91d58599e2f04a26c5" class="username">pcmanbob</a>
+						
+					</dt>
+
+					
+					
+					
+				<dd class="profile-posts"><strong>Posts:</strong> <a href="https://www.raspberrypi.org/forums/search.php?author_id=71930&amp;sr=posts&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">10647</a></dd>				<dd class="profile-joined"><strong>Joined:</strong> Fri May 31, 2013 9:28 pm</dd>				
+				
+																			<dd class="profile-custom-field profile-phpbb_location"><strong>Location:</strong> Mansfield UK</dd>
+													
+												
+				</dl>
+
+				<div class="postbody">
+										<div id="post_content1124647">
+					
+					<h3><a href="https://www.raspberrypi.org/forums/viewtopic.php?t=176241#p1124647">Re: PIR Motion sensor always outputting</a></h3>
+
+				
+				
+															<ul class="posts-buttons">
+																																																									<li>
+									<a href="https://www.raspberrypi.org/forums/posting.php?mode=quote&amp;f=28&amp;p=1124647&amp;sid=ab3b8a754e135e91d58599e2f04a26c5" title="Reply with quote"><i class="fa fa-quote-left"></i><span>Quote</span></a>
+								</li>
+																				</ul>
+									
+				
+					
+					<p class="author"><a href="https://www.raspberrypi.org/forums/viewtopic.php?p=1124647&amp;sid=ab3b8a754e135e91d58599e2f04a26c5#p1124647">Sun Mar 05, 2017 11:36 am</a> </p>
+
+					
+					
+					
+					<div class="content"><blockquote><div><cite>gordon77 wrote:</cite>With a bit of luck the protection diode on the board will have saved it..<br>
+<br>
+<a href="https://learn.adafruit.com/pir-passive-infrared-proximity-motion-sensor/" class="postlink">https://learn.adafruit.com/pir-passive- ... on-sensor/</a></div></blockquote>
+
+having just looked at the link the adafruit ones both have the power and Gnd connections reversed.<br>
+<br>
+so they seem to be opposite to the ones supplied from else were ?<br>
+<br>
+jetpackjack I would check before changing the power/Gnd connections, are there any makings on the PCB.  were did you get yours from ?<br>
+<br>
+Edit.<br>
+<img src="./PIR Motion sensor always outputting - Raspberry Pi Forums_files/1jGdyZu.jpg" class="postimage" alt="Image"><br>
+so looking at your image closely you can see that the Gnd is in fact connected to the power pin, you can make out the protection diode next to it.</div>
+
+					
+																					<div class="notice">
+							Last edited by <a href="https://www.raspberrypi.org/forums/memberlist.php?mode=viewprofile&amp;u=71930&amp;sid=ab3b8a754e135e91d58599e2f04a26c5" class="username">pcmanbob</a> on Sun Mar 05, 2017 11:44 am, edited 1 time in total.
+													</div>
+					
+															<div id="sig1124647" class="signature"><span style="font-size: 90%; line-height: normal"> We want information… information… information........................no information no help</span><br>
+<span style="font-size: 90%; line-height: normal">The use of crystal balls &amp; mind reading are not supported </span></div>
+										</div>
+
+				</div>
+
+				</div>
+											</div>
+
+			<hr class="divider">
+														<div id="p1124650" class="post has-profile bg2">
+				<div class="inner">
+
+				<dl class="postprofile" id="profile1124650">
+					<dt class="no-profile-rank no-avatar">
+						<div class="avatar-container">
+																											</div>
+
+						
+						<a href="https://www.raspberrypi.org/forums/memberlist.php?mode=viewprofile&amp;u=224155&amp;sid=ab3b8a754e135e91d58599e2f04a26c5" class="username">jetpackjack</a>
+						
+					</dt>
+
+					
+					
+					
+				<dd class="profile-posts"><strong>Posts:</strong> <a href="https://www.raspberrypi.org/forums/search.php?author_id=224155&amp;sr=posts&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">11</a></dd>				<dd class="profile-joined"><strong>Joined:</strong> Tue Feb 28, 2017 7:53 am</dd>				
+				
+												
+												
+				</dl>
+
+				<div class="postbody">
+										<div id="post_content1124650">
+					
+					<h3><a href="https://www.raspberrypi.org/forums/viewtopic.php?t=176241#p1124650">Re: PIR Motion sensor always outputting</a></h3>
+
+				
+				
+															<ul class="posts-buttons">
+																																																									<li>
+									<a href="https://www.raspberrypi.org/forums/posting.php?mode=quote&amp;f=28&amp;p=1124650&amp;sid=ab3b8a754e135e91d58599e2f04a26c5" title="Reply with quote"><i class="fa fa-quote-left"></i><span>Quote</span></a>
+								</li>
+																				</ul>
+									
+				
+					
+					<p class="author"><a href="https://www.raspberrypi.org/forums/viewtopic.php?p=1124650&amp;sid=ab3b8a754e135e91d58599e2f04a26c5#p1124650">Sun Mar 05, 2017 11:42 am</a> </p>
+
+					
+					
+					
+					<div class="content">Guys, I do believe it's working! <strong>Thank you.<br>
+</strong>
+<blockquote><div><cite>pcmanbob wrote:</cite>Hi.<br>
+<br>
+looking at your image it would appear that you have power and Gnd reversed on the PIR.<br>
+<br>
+<img src="./PIR Motion sensor always outputting - Raspberry Pi Forums_files/7V53839.jpg" class="postimage" alt="Image"><br>
+this was taken from the manual for the PIR and is how I wired mine which works fine.<br>
+all the wiring info on the web site you linked to shows it reversed.</div></blockquote>
+
+Thank you, you were right. The diagram I was following showed it the wrong way round. Brilliant!<br>
+<br>
+One more thing...if you don't mind! I would like to call a subprocess when the motion sensor outputs a signal, so it then triggers my camera via gphoto2. I have tried entering the following but get an error:<br>
+<br>
+subprocess.call(["gphoto2". "--trigger-capture"])<br>
+<br>
+Can you help me place it correctly in the python code.<br>
+<br>
+This is where I placed it but I get an error:<br>
+
+<div class="codebox"><p>Code: <a href="https://www.raspberrypi.org/forums/viewtopic.php?t=176241#" onclick="selectCode(this); return false;">Select all</a></p><pre><code>import RPi.GPIO as GPIO
+import time
+GPIO.setmode(GPIO.BCM)
+GPIO.setwarnings(False)
+
+pir_sensor = 21 #GPIO pin 21
+led = 17 #GPIO pin 17
+
+GPIO.setup(pir_sensor, GPIO.IN, GPIO.PUD_DOWN)
+
+current_state = 0
+GPIO.setup(led,GPIO.OUT)
+
+while True:
+    try:
+        time.sleep(0.1)
+        current_state = GPIO.input(pir_sensor)
+        if current_state == 1:
+          print("GPIO pin %s is %s" % (pir_sensor, current_state)) # motion detected
+          GPIO.output(led,True) #Turn on LED
+          subprocess.call(["gphoto2", "--trigger-capture"])
+          time.sleep(2) # leave LED on for 2 seconds
+          GPIO.output(led,False) #turn off LED
+          time.sleep(4) # wait 4 seconds for PIR to reset. 
+    except KeyboardInterrupt:
+        GPIO.cleanup()
+       
+</code></pre></div></div>
+
+					
+															
+															
+										</div>
+
+				</div>
+
+				</div>
+											</div>
+
+			<hr class="divider">
+														<div id="p1124656" class="post has-profile bg1">
+				<div class="inner">
+
+				<dl class="postprofile" id="profile1124656">
+					<dt class="no-profile-rank no-avatar">
+						<div class="avatar-container">
+																											</div>
+
+						
+						<a href="https://www.raspberrypi.org/forums/memberlist.php?mode=viewprofile&amp;u=224155&amp;sid=ab3b8a754e135e91d58599e2f04a26c5" class="username">jetpackjack</a>
+						
+					</dt>
+
+					
+					
+					
+				<dd class="profile-posts"><strong>Posts:</strong> <a href="https://www.raspberrypi.org/forums/search.php?author_id=224155&amp;sr=posts&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">11</a></dd>				<dd class="profile-joined"><strong>Joined:</strong> Tue Feb 28, 2017 7:53 am</dd>				
+				
+												
+												
+				</dl>
+
+				<div class="postbody">
+										<div id="post_content1124656">
+					
+					<h3><a href="https://www.raspberrypi.org/forums/viewtopic.php?t=176241#p1124656">Re: PIR Motion sensor always outputting</a></h3>
+
+				
+				
+															<ul class="posts-buttons">
+																																																									<li>
+									<a href="https://www.raspberrypi.org/forums/posting.php?mode=quote&amp;f=28&amp;p=1124656&amp;sid=ab3b8a754e135e91d58599e2f04a26c5" title="Reply with quote"><i class="fa fa-quote-left"></i><span>Quote</span></a>
+								</li>
+																				</ul>
+									
+				
+					
+					<p class="author"><a href="https://www.raspberrypi.org/forums/viewtopic.php?p=1124656&amp;sid=ab3b8a754e135e91d58599e2f04a26c5#p1124656">Sun Mar 05, 2017 11:50 am</a> </p>
+
+					
+					
+					
+					<div class="content">Guys it's working!! I had to import the subprocess at the start of the code.<br>
+<br>
+I can now trigger the camera with the motion, so delighted to get this working and thanks lots for all your help. I'll get a little tutorial up soon.<br>
+<br>
+Thanks, Thanks Thanks!!!</div>
+
+					
+															
+															
+										</div>
+
+				</div>
+
+				</div>
+											</div>
+
+			<hr class="divider">
+														<div id="p1127755" class="post has-profile bg2">
+				<div class="inner">
+
+				<dl class="postprofile" id="profile1127755">
+					<dt class="no-profile-rank no-avatar">
+						<div class="avatar-container">
+																											</div>
+
+						
+						<a href="https://www.raspberrypi.org/forums/memberlist.php?mode=viewprofile&amp;u=225441&amp;sid=ab3b8a754e135e91d58599e2f04a26c5" class="username">vichylehawj</a>
+						
+					</dt>
+
+					
+					
+					
+				<dd class="profile-posts"><strong>Posts:</strong> <a href="https://www.raspberrypi.org/forums/search.php?author_id=225441&amp;sr=posts&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">1</a></dd>				<dd class="profile-joined"><strong>Joined:</strong> Fri Mar 10, 2017 2:24 am</dd>				
+				
+												
+												
+				</dl>
+
+				<div class="postbody">
+										<div id="post_content1127755">
+					
+					<h3><a href="https://www.raspberrypi.org/forums/viewtopic.php?t=176241#p1127755">Re: PIR Motion sensor always outputting</a></h3>
+
+				
+				
+															<ul class="posts-buttons">
+																																																									<li>
+									<a href="https://www.raspberrypi.org/forums/posting.php?mode=quote&amp;f=28&amp;p=1127755&amp;sid=ab3b8a754e135e91d58599e2f04a26c5" title="Reply with quote"><i class="fa fa-quote-left"></i><span>Quote</span></a>
+								</li>
+																				</ul>
+									
+				
+					
+					<p class="author"><a href="https://www.raspberrypi.org/forums/viewtopic.php?p=1127755&amp;sid=ab3b8a754e135e91d58599e2f04a26c5#p1127755">Fri Mar 10, 2017 2:32 am</a> </p>
+
+					
+					
+					
+					<div class="content">Did you ever get the PIR sensor to trigger the camera?</div>
+
+					
+															
+															
+										</div>
+
+				</div>
+
+				</div>
+											</div>
+
+			<hr class="divider">
+														<div id="p1222613" class="post has-profile bg1">
+				<div class="inner">
+
+				<dl class="postprofile" id="profile1222613">
+					<dt class="no-profile-rank no-avatar">
+						<div class="avatar-container">
+																											</div>
+
+						
+						<a href="https://www.raspberrypi.org/forums/memberlist.php?mode=viewprofile&amp;u=224155&amp;sid=ab3b8a754e135e91d58599e2f04a26c5" class="username">jetpackjack</a>
+						
+					</dt>
+
+					
+					
+					
+				<dd class="profile-posts"><strong>Posts:</strong> <a href="https://www.raspberrypi.org/forums/search.php?author_id=224155&amp;sr=posts&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">11</a></dd>				<dd class="profile-joined"><strong>Joined:</strong> Tue Feb 28, 2017 7:53 am</dd>				
+				
+												
+												
+				</dl>
+
+				<div class="postbody">
+										<div id="post_content1222613">
+					
+					<h3><a href="https://www.raspberrypi.org/forums/viewtopic.php?t=176241#p1222613">Re: PIR Motion sensor always outputting</a></h3>
+
+				
+				
+															<ul class="posts-buttons">
+																																																									<li>
+									<a href="https://www.raspberrypi.org/forums/posting.php?mode=quote&amp;f=28&amp;p=1222613&amp;sid=ab3b8a754e135e91d58599e2f04a26c5" title="Reply with quote"><i class="fa fa-quote-left"></i><span>Quote</span></a>
+								</li>
+																				</ul>
+									
+				
+					
+					<p class="author"><a href="https://www.raspberrypi.org/forums/viewtopic.php?p=1222613&amp;sid=ab3b8a754e135e91d58599e2f04a26c5#p1222613">Sat Oct 14, 2017 1:28 pm</a> </p>
+
+					
+					
+					
+					<div class="content">Hi Guys,<br>
+<br>
+I'm looking for some help. I've not touched the Raspberry Pi for 6 months since this original post. I've come back to the project and I feel like I'm starting from scratch, I can't remember a thing!<br>
+<br>
+I have the board set up as follows:<br>
+<br>
+<a href="https://ibb.co/cdj6fb" class="postlink"><img src="./PIR Motion sensor always outputting - Raspberry Pi Forums_files/IMG_1627.jpg" class="postimage" alt="Image"></a><br>
+<br>
+I have the following code in a file called detection.py<br>
+
+<div class="codebox"><p>Code: <a href="https://www.raspberrypi.org/forums/viewtopic.php?t=176241#" onclick="selectCode(this); return false;">Select all</a></p><pre><code>import RPi.GPIO as GPIO
+import time
+import subprocess
+GPIO.setmode(GPIO.BCM)
+GPIO.setwarnings(False)
+
+pir_sensor = 21 #GPIO pin 21
+led = 17 #GPIO pin 17
+
+GPIO.setup(pir_sensor, GPIO.IN, GPIO.PUD_DOWN)
+
+current_state = 0
+GPIO.setup(led,GPIO.OUT)
+
+while True:
+    try:
+        time.sleep(0.1)
+        current_state = GPIO.input(pir_sensor)
+        if current_state == 1:
+          print("GPIO pin %s is %s" % (pir_sensor, current_state)) # motion detected
+          GPIO.output(led,True) #Turn on LED
+          subprocess.call(["gphoto2", "--trigger-capture"])
+          time.sleep(1) # leave LED on for 2 seconds
+          GPIO.output(led,False) #turn off LED
+          time.sleep(1) # wait 1 seconds for PIR to reset. 
+    except KeyboardInterrupt:
+        GPIO.cleanup()</code></pre></div>
+
+I then call the script in the Terminal by typing "sudo python detection.py" <br>
+<br>
+My problem is that nothing happens, the terminal cursor moves to the next line but that's it, no further text is displayed.<br>
+<br>
+Can anyone see what I'm doing wrong? I've tried a few different things and I've been at it 3hrs now but feel like I'm going backwards!!<br>
+<br>
+Thanks in advance</div>
+
+					
+															
+															
+										</div>
+
+				</div>
+
+				</div>
+											</div>
+
+			<hr class="divider">
+														<div id="p1222726" class="post has-profile bg2">
+				<div class="inner">
+
+				<dl class="postprofile" id="profile1222726">
+					<dt class="no-profile-rank no-avatar">
+						<div class="avatar-container">
+																											</div>
+
+						
+						<a href="https://www.raspberrypi.org/forums/memberlist.php?mode=viewprofile&amp;u=71930&amp;sid=ab3b8a754e135e91d58599e2f04a26c5" class="username">pcmanbob</a>
+						
+					</dt>
+
+					
+					
+					
+				<dd class="profile-posts"><strong>Posts:</strong> <a href="https://www.raspberrypi.org/forums/search.php?author_id=71930&amp;sr=posts&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">10647</a></dd>				<dd class="profile-joined"><strong>Joined:</strong> Fri May 31, 2013 9:28 pm</dd>				
+				
+																			<dd class="profile-custom-field profile-phpbb_location"><strong>Location:</strong> Mansfield UK</dd>
+													
+												
+				</dl>
+
+				<div class="postbody">
+										<div id="post_content1222726">
+					
+					<h3><a href="https://www.raspberrypi.org/forums/viewtopic.php?t=176241#p1222726">Re: PIR Motion sensor always outputting</a></h3>
+
+				
+				
+															<ul class="posts-buttons">
+																																																									<li>
+									<a href="https://www.raspberrypi.org/forums/posting.php?mode=quote&amp;f=28&amp;p=1222726&amp;sid=ab3b8a754e135e91d58599e2f04a26c5" title="Reply with quote"><i class="fa fa-quote-left"></i><span>Quote</span></a>
+								</li>
+																				</ul>
+									
+				
+					
+					<p class="author"><a href="https://www.raspberrypi.org/forums/viewtopic.php?p=1222726&amp;sid=ab3b8a754e135e91d58599e2f04a26c5#p1222726">Sat Oct 14, 2017 7:28 pm</a> </p>
+
+					
+					
+					
+					<div class="content">First thing I can see is that the pir is connected to 3.3V, it needs connecting to 5V<br>
+As it requires a minimum of 4.5V to operate.</div>
+
+					
+															
+															<div id="sig1222726" class="signature"><span style="font-size: 90%; line-height: normal"> We want information… information… information........................no information no help</span><br>
+<span style="font-size: 90%; line-height: normal">The use of crystal balls &amp; mind reading are not supported </span></div>
+										</div>
+
+				</div>
+
+				</div>
+											</div>
+
+			<hr class="divider">
+														<div id="p1222749" class="post has-profile bg1">
+				<div class="inner">
+
+				<dl class="postprofile" id="profile1222749">
+					<dt class="no-profile-rank has-avatar">
+						<div class="avatar-container">
+																						<a href="https://www.raspberrypi.org/forums/memberlist.php?mode=viewprofile&amp;u=119265&amp;sid=ab3b8a754e135e91d58599e2f04a26c5" class="avatar"><img class="avatar" src="./PIR Motion sensor always outputting - Raspberry Pi Forums_files/119265.jpg" width="90" height="83" alt="User avatar"></a>																				</div>
+
+						
+						<a href="https://www.raspberrypi.org/forums/memberlist.php?mode=viewprofile&amp;u=119265&amp;sid=ab3b8a754e135e91d58599e2f04a26c5" class="username">davidcoton</a>
+						
+					</dt>
+
+					
+					
+					
+				<dd class="profile-posts"><strong>Posts:</strong> <a href="https://www.raspberrypi.org/forums/search.php?author_id=119265&amp;sr=posts&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">5821</a></dd>				<dd class="profile-joined"><strong>Joined:</strong> Mon Sep 01, 2014 2:37 pm</dd>				
+				
+																												<dd class="profile-custom-field profile-phpbb_location"><strong>Location:</strong> Cambridge, UK</dd>
+													
+													<dd class="profile-contact">
+						<strong>Contact:</strong>
+												<a class="contact-icon contact-icon-phpbb_website" href="http://www.coton.me.uk/home.htm" title="Website">Website
+						</a>
+											</dd>
+								
+				</dl>
+
+				<div class="postbody">
+										<div id="post_content1222749">
+					
+					<h3><a href="https://www.raspberrypi.org/forums/viewtopic.php?t=176241#p1222749">Re: PIR Motion sensor always outputting</a></h3>
+
+				
+				
+															<ul class="posts-buttons">
+																																																									<li>
+									<a href="https://www.raspberrypi.org/forums/posting.php?mode=quote&amp;f=28&amp;p=1222749&amp;sid=ab3b8a754e135e91d58599e2f04a26c5" title="Reply with quote"><i class="fa fa-quote-left"></i><span>Quote</span></a>
+								</li>
+																				</ul>
+									
+				
+					
+					<p class="author"><a href="https://www.raspberrypi.org/forums/viewtopic.php?p=1222749&amp;sid=ab3b8a754e135e91d58599e2f04a26c5#p1222749">Sat Oct 14, 2017 9:09 pm</a> </p>
+
+					
+					
+					
+					<div class="content"><blockquote><div><cite><a href="https://www.raspberrypi.org/forums/memberlist.php?mode=viewprofile&amp;u=71930&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">pcmanbob</a> wrote: <a href="https://www.raspberrypi.org/forums/viewtopic.php?p=1222726&amp;sid=ab3b8a754e135e91d58599e2f04a26c5#p1222726" data-post-id="1222726" onclick="if(document.getElementById(hash.substr(1)))href=hash">↑</a><div class="responsive-hide">Sat Oct 14, 2017 7:28 pm</div></cite>
+First thing I can see is that the pir is connected to 3.3V, it needs connecting to 5V<br>
+As it requires a minimum of 4.5V to operate.
+</div></blockquote>
+
+Look more closely -- the yellow wire is on GPIO pin 2, on the outer row, which is 5V.<br>
+Unless, of course, I need new glasses  <img class="smilies" src="./PIR Motion sensor always outputting - Raspberry Pi Forums_files/icon_lol.webp" width="15" height="17" alt=":lol:" title="Laughing"></div>
+
+					
+															
+															<div id="sig1222749" class="signature"><strong>Location:</strong> 345th cell on the right of the 210th row of L2 cache</div>
+										</div>
+
+				</div>
+
+				</div>
+											</div>
+
+			<hr class="divider">
+														<div id="p1222897" class="post has-profile bg2">
+				<div class="inner">
+
+				<dl class="postprofile" id="profile1222897">
+					<dt class="no-profile-rank no-avatar">
+						<div class="avatar-container">
+																											</div>
+
+						
+						<a href="https://www.raspberrypi.org/forums/memberlist.php?mode=viewprofile&amp;u=224155&amp;sid=ab3b8a754e135e91d58599e2f04a26c5" class="username">jetpackjack</a>
+						
+					</dt>
+
+					
+					
+					
+				<dd class="profile-posts"><strong>Posts:</strong> <a href="https://www.raspberrypi.org/forums/search.php?author_id=224155&amp;sr=posts&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">11</a></dd>				<dd class="profile-joined"><strong>Joined:</strong> Tue Feb 28, 2017 7:53 am</dd>				
+				
+												
+												
+				</dl>
+
+				<div class="postbody">
+										<div id="post_content1222897">
+					
+					<h3><a href="https://www.raspberrypi.org/forums/viewtopic.php?t=176241#p1222897">Re: PIR Motion sensor always outputting</a></h3>
+
+				
+				
+															<ul class="posts-buttons">
+																																																									<li>
+									<a href="https://www.raspberrypi.org/forums/posting.php?mode=quote&amp;f=28&amp;p=1222897&amp;sid=ab3b8a754e135e91d58599e2f04a26c5" title="Reply with quote"><i class="fa fa-quote-left"></i><span>Quote</span></a>
+								</li>
+																				</ul>
+									
+				
+					
+					<p class="author"><a href="https://www.raspberrypi.org/forums/viewtopic.php?p=1222897&amp;sid=ab3b8a754e135e91d58599e2f04a26c5#p1222897">Sun Oct 15, 2017 8:43 am</a> </p>
+
+					
+					
+					
+					<div class="content">Thanks for coming back to me. I think the wiring is ok...it's the script that I seem to be having issues with.<br>
+<br>
+I just want to trigger gphoto2 when the motion sensor is triggered.</div>
+
+					
+															
+															
+										</div>
+
+				</div>
+
+				</div>
+											</div>
+
+			<hr class="divider">
+														<div id="p1222939" class="post has-profile bg1">
+				<div class="inner">
+
+				<dl class="postprofile" id="profile1222939">
+					<dt class="no-profile-rank no-avatar">
+						<div class="avatar-container">
+																											</div>
+
+						
+						<a href="https://www.raspberrypi.org/forums/memberlist.php?mode=viewprofile&amp;u=71930&amp;sid=ab3b8a754e135e91d58599e2f04a26c5" class="username">pcmanbob</a>
+						
+					</dt>
+
+					
+					
+					
+				<dd class="profile-posts"><strong>Posts:</strong> <a href="https://www.raspberrypi.org/forums/search.php?author_id=71930&amp;sr=posts&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">10647</a></dd>				<dd class="profile-joined"><strong>Joined:</strong> Fri May 31, 2013 9:28 pm</dd>				
+				
+																			<dd class="profile-custom-field profile-phpbb_location"><strong>Location:</strong> Mansfield UK</dd>
+													
+												
+				</dl>
+
+				<div class="postbody">
+										<div id="post_content1222939">
+					
+					<h3><a href="https://www.raspberrypi.org/forums/viewtopic.php?t=176241#p1222939">Re: PIR Motion sensor always outputting</a></h3>
+
+				
+				
+															<ul class="posts-buttons">
+																																																									<li>
+									<a href="https://www.raspberrypi.org/forums/posting.php?mode=quote&amp;f=28&amp;p=1222939&amp;sid=ab3b8a754e135e91d58599e2f04a26c5" title="Reply with quote"><i class="fa fa-quote-left"></i><span>Quote</span></a>
+								</li>
+																				</ul>
+									
+				
+					
+					<p class="author"><a href="https://www.raspberrypi.org/forums/viewtopic.php?p=1222939&amp;sid=ab3b8a754e135e91d58599e2f04a26c5#p1222939">Sun Oct 15, 2017 10:53 am</a> </p>
+
+					
+					
+					
+					<div class="content">So tested your code using switch in place of pir and replacing your subprocess call with a print statement,<br>
+apart from the try: needing to be outside the loop  it seems to work correctly for me.<br>
+
+<div class="codebox"><p>Code: <a href="https://www.raspberrypi.org/forums/viewtopic.php?t=176241#" onclick="selectCode(this); return false;">Select all</a></p><pre><code>import RPi.GPIO as GPIO
+import time
+import subprocess
+GPIO.setmode(GPIO.BCM)
+GPIO.setwarnings(False)
+
+pir_sensor = 21 #GPIO pin 21
+led = 17 #GPIO pin 17
+
+GPIO.setup(pir_sensor, GPIO.IN, GPIO.PUD_DOWN)
+
+current_state = 0
+GPIO.setup(led,GPIO.OUT)
+
+try:
+    while True:
+    
+        time.sleep(0.1)
+        current_state = GPIO.input(pir_sensor)
+        if current_state == 1:
+          print("GPIO pin %s is %s" % (pir_sensor, current_state)) # motion detected
+          GPIO.output(led,True) #Turn on LED
+          print "capture picture"
+          time.sleep(2) # leave LED on for 2 seconds
+          GPIO.output(led,False) #turn off LED
+          time.sleep(2) # wait 1 seconds for PIR to reset. 
+except KeyboardInterrupt:
+    GPIO.cleanup()
+    </code></pre></div>
+
+and you don't need to call it using sudo.</div>
+
+					
+															
+															<div id="sig1222939" class="signature"><span style="font-size: 90%; line-height: normal"> We want information… information… information........................no information no help</span><br>
+<span style="font-size: 90%; line-height: normal">The use of crystal balls &amp; mind reading are not supported </span></div>
+										</div>
+
+				</div>
+
+				</div>
+											</div>
+
+			<hr class="divider">
+														<div id="p1223099" class="post has-profile bg2">
+				<div class="inner">
+
+				<dl class="postprofile" id="profile1223099">
+					<dt class="no-profile-rank no-avatar">
+						<div class="avatar-container">
+																											</div>
+
+						
+						<a href="https://www.raspberrypi.org/forums/memberlist.php?mode=viewprofile&amp;u=224155&amp;sid=ab3b8a754e135e91d58599e2f04a26c5" class="username">jetpackjack</a>
+						
+					</dt>
+
+					
+					
+					
+				<dd class="profile-posts"><strong>Posts:</strong> <a href="https://www.raspberrypi.org/forums/search.php?author_id=224155&amp;sr=posts&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">11</a></dd>				<dd class="profile-joined"><strong>Joined:</strong> Tue Feb 28, 2017 7:53 am</dd>				
+				
+												
+												
+				</dl>
+
+				<div class="postbody">
+										<div id="post_content1223099">
+					
+					<h3><a href="https://www.raspberrypi.org/forums/viewtopic.php?t=176241#p1223099">Re: PIR Motion sensor always outputting</a></h3>
+
+				
+				
+															<ul class="posts-buttons">
+																																																									<li>
+									<a href="https://www.raspberrypi.org/forums/posting.php?mode=quote&amp;f=28&amp;p=1223099&amp;sid=ab3b8a754e135e91d58599e2f04a26c5" title="Reply with quote"><i class="fa fa-quote-left"></i><span>Quote</span></a>
+								</li>
+																				</ul>
+									
+				
+					
+					<p class="author"><a href="https://www.raspberrypi.org/forums/viewtopic.php?p=1223099&amp;sid=ab3b8a754e135e91d58599e2f04a26c5#p1223099">Sun Oct 15, 2017 6:11 pm</a> </p>
+
+					
+					
+					
+					<div class="content">Dudes, thanks for coming back to me and for testing the script out. Totally weird, I've got no idea why it won't start on my machine, it still won't when I reference it. Not to worry though, I have made some progress and created another script. I decided to strip things back and went with a simple script, the following:<br>
+
+<div class="codebox"><p>Code: <a href="https://www.raspberrypi.org/forums/viewtopic.php?t=176241#" onclick="selectCode(this); return false;">Select all</a></p><pre><code>import RPi.GPIO as GPIO
+import time
+import subprocess
+GPIO.setmode(GPIO.BOARD)
+GPIO.setwarnings(False)
+
+GPIO.setup(12, GPIO.IN)         #Read output from PIR motion sensor
+
+while True:
+       i=GPIO.input(12)
+       if i==0:                 #When output from motion sensor is LOW
+             print "No intruders",i
+             time.sleep(0.1)
+       elif i==1:               #When output from motion sensor is HIGH
+             print "Intruder detected",i
+             subprocess.call(["gphoto2", "--trigger-capture", "capturetarget=card"])
+             time.sleep(0.1)</code></pre></div>
+
+It triggers the camera and stores the image on the camera - something I had an issue with when using "--trigger-capture' by itself. I do get an error in the console but everything works as it should in terms of the hardware.<br>
+<br>
+I've got my Nikon D810 set up with a USB into the Pi. I then run the script on the Pi and use a power cell to power it. I can then place it in the field, in this case a dark wood in the Scottish Highlands, and all being well the thing goes off when a beastie walks past! <br>
+<br>
+Wish me luck fellas!</div>
+
+					
+															
+															
+										</div>
+
+				</div>
+
+				</div>
+											</div>
+
+			<hr class="divider">
+														<div id="p1271711" class="post has-profile bg1">
+				<div class="inner">
+
+				<dl class="postprofile" id="profile1271711">
+					<dt class="no-profile-rank no-avatar">
+						<div class="avatar-container">
+																											</div>
+
+						
+						<a href="https://www.raspberrypi.org/forums/memberlist.php?mode=viewprofile&amp;u=258259&amp;sid=ab3b8a754e135e91d58599e2f04a26c5" class="username">ronakshah2000</a>
+						
+					</dt>
+
+					
+					
+					
+				<dd class="profile-posts"><strong>Posts:</strong> <a href="https://www.raspberrypi.org/forums/search.php?author_id=258259&amp;sr=posts&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">1</a></dd>				<dd class="profile-joined"><strong>Joined:</strong> Sat Feb 10, 2018 8:44 pm</dd>				
+				
+												
+												
+				</dl>
+
+				<div class="postbody">
+										<div id="post_content1271711">
+					
+					<h3><a href="https://www.raspberrypi.org/forums/viewtopic.php?t=176241#p1271711">Re: PIR Motion sensor always outputting</a></h3>
+
+				
+				
+															<ul class="posts-buttons">
+																																																									<li>
+									<a href="https://www.raspberrypi.org/forums/posting.php?mode=quote&amp;f=28&amp;p=1271711&amp;sid=ab3b8a754e135e91d58599e2f04a26c5" title="Reply with quote"><i class="fa fa-quote-left"></i><span>Quote</span></a>
+								</li>
+																				</ul>
+									
+				
+					
+					<p class="author"><a href="https://www.raspberrypi.org/forums/viewtopic.php?p=1271711&amp;sid=ab3b8a754e135e91d58599e2f04a26c5#p1271711">Sat Feb 10, 2018 8:47 pm</a> </p>
+
+					
+					
+					
+					<div class="content">As it turned out I had the same issue with my PIR sensor as the OP.  I had the 5V and GND swapped around as I was apparently working with an incorrect diagram.  Thanks for the post.  I used a new sensor (glad they shipped 10), and it worked great.<br>
+<br>
+On the plus side, I figured out how to download a python script and run it in the process of debugging.</div>
+
+					
+															
+															
+										</div>
+
+				</div>
+
+				</div>
+											</div>
+
+			<hr class="divider">
+														<div id="p1368737" class="post has-profile bg2">
+				<div class="inner">
+
+				<dl class="postprofile" id="profile1368737">
+					<dt class="no-profile-rank no-avatar">
+						<div class="avatar-container">
+																											</div>
+
+						
+						<a href="https://www.raspberrypi.org/forums/memberlist.php?mode=viewprofile&amp;u=278242&amp;sid=ab3b8a754e135e91d58599e2f04a26c5" class="username">3DRAH33M</a>
+						
+					</dt>
+
+					
+					
+					
+				<dd class="profile-posts"><strong>Posts:</strong> <a href="https://www.raspberrypi.org/forums/search.php?author_id=278242&amp;sr=posts&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">4</a></dd>				<dd class="profile-joined"><strong>Joined:</strong> Sat Sep 22, 2018 3:38 pm</dd>				
+				
+												
+												
+				</dl>
+
+				<div class="postbody">
+										<div id="post_content1368737">
+					
+					<h3><a href="https://www.raspberrypi.org/forums/viewtopic.php?t=176241#p1368737">Re: PIR Motion sensor always outputting</a></h3>
+
+				
+				
+															<ul class="posts-buttons">
+																																																									<li>
+									<a href="https://www.raspberrypi.org/forums/posting.php?mode=quote&amp;f=28&amp;p=1368737&amp;sid=ab3b8a754e135e91d58599e2f04a26c5" title="Reply with quote"><i class="fa fa-quote-left"></i><span>Quote</span></a>
+								</li>
+																				</ul>
+									
+				
+					
+					<p class="author"><a href="https://www.raspberrypi.org/forums/viewtopic.php?p=1368737&amp;sid=ab3b8a754e135e91d58599e2f04a26c5#p1368737">Sat Sep 22, 2018 3:54 pm</a> </p>
+
+					
+					
+					
+					<div class="content">Hi everyone, I'm getting a constant 'on' signal from my PIR sensor. I know for sure my sensor  works because i tested it using a 5v psu and an led. My wiring is as follows:PIR vcc to Rpi 5v, out to Rpi pin 4(bcm), and gnd to Rpi gnd. 
+ <div class="codebox"><p>Code: <a href="https://www.raspberrypi.org/forums/viewtopic.php?t=176241#" onclick="selectCode(this); return false;">Select all</a></p><pre><code>from gpiozero import Button
+from time import sleep
+
+pir = Button(4)
+
+while True:
+          print(pir.value)
+          sleep(1)
+ </code></pre></div>
+I also know my code works because if i attach a physical button instead of the pir i get a proper 'true' or 'false' output. But with the pir connected i always get 'false'. As a last resort i bought a new sensor, tested it the same way, made sure it works, connected it but still the same problem<br>
+ All the stuff  on the pir like the sensitivity, jumpers etc are proper. Any suggestions? Thanks.</div>
+
+					
+															
+															
+										</div>
+
+				</div>
+
+				</div>
+											</div>
+
+			<hr class="divider">
+														<div id="p1368980" class="post has-profile bg1">
+				<div class="inner">
+
+				<dl class="postprofile" id="profile1368980">
+					<dt class="no-profile-rank no-avatar">
+						<div class="avatar-container">
+																											</div>
+
+						
+						<a href="https://www.raspberrypi.org/forums/memberlist.php?mode=viewprofile&amp;u=71930&amp;sid=ab3b8a754e135e91d58599e2f04a26c5" class="username">pcmanbob</a>
+						
+					</dt>
+
+					
+					
+					
+				<dd class="profile-posts"><strong>Posts:</strong> <a href="https://www.raspberrypi.org/forums/search.php?author_id=71930&amp;sr=posts&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">10647</a></dd>				<dd class="profile-joined"><strong>Joined:</strong> Fri May 31, 2013 9:28 pm</dd>				
+				
+																			<dd class="profile-custom-field profile-phpbb_location"><strong>Location:</strong> Mansfield UK</dd>
+													
+												
+				</dl>
+
+				<div class="postbody">
+										<div id="post_content1368980">
+					
+					<h3><a href="https://www.raspberrypi.org/forums/viewtopic.php?t=176241#p1368980">Re: PIR Motion sensor always outputting</a></h3>
+
+				
+				
+															<ul class="posts-buttons">
+																																																									<li>
+									<a href="https://www.raspberrypi.org/forums/posting.php?mode=quote&amp;f=28&amp;p=1368980&amp;sid=ab3b8a754e135e91d58599e2f04a26c5" title="Reply with quote"><i class="fa fa-quote-left"></i><span>Quote</span></a>
+								</li>
+																				</ul>
+									
+				
+					
+					<p class="author"><a href="https://www.raspberrypi.org/forums/viewtopic.php?p=1368980&amp;sid=ab3b8a754e135e91d58599e2f04a26c5#p1368980">Sun Sep 23, 2018 11:28 am</a> </p>
+
+					
+					
+					
+					<div class="content">If your sure your pir is working then try this code<br>
+
+<div class="codebox"><p>Code: <a href="https://www.raspberrypi.org/forums/viewtopic.php?t=176241#" onclick="selectCode(this); return false;">Select all</a></p><pre><code>import RPi.GPIO as GPIO
+import time
+
+
+GPIO.setmode(GPIO.BCM)
+GPIO.setwarnings(False)
+GPIO.setup(18, GPIO.IN)
+
+while True:
+
+    print GPIO.input(18)
+    time.sleep (1)
+    </code></pre></div>
+
+it just loops continuously printing the state of the input at 1 second intervals, I have set the input to gpio 18 which is pin 12 as gpio 4 is also the<br>
+ 1-wire port by default and if its enabled it could cause problems.</div>
+
+					
+															
+															<div id="sig1368980" class="signature"><span style="font-size: 90%; line-height: normal"> We want information… information… information........................no information no help</span><br>
+<span style="font-size: 90%; line-height: normal">The use of crystal balls &amp; mind reading are not supported </span></div>
+										</div>
+
+				</div>
+
+				</div>
+											</div>
+
+			<hr class="divider">
+														<div id="p1368983" class="post has-profile bg2">
+				<div class="inner">
+
+				<dl class="postprofile" id="profile1368983">
+					<dt class="no-profile-rank no-avatar">
+						<div class="avatar-container">
+																											</div>
+
+						
+						<a href="https://www.raspberrypi.org/forums/memberlist.php?mode=viewprofile&amp;u=21810&amp;sid=ab3b8a754e135e91d58599e2f04a26c5" class="username">DirkS</a>
+						
+					</dt>
+
+					
+					
+					
+				<dd class="profile-posts"><strong>Posts:</strong> <a href="https://www.raspberrypi.org/forums/search.php?author_id=21810&amp;sr=posts&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">10575</a></dd>				<dd class="profile-joined"><strong>Joined:</strong> Tue Jun 19, 2012 9:46 pm</dd>				
+				
+																			<dd class="profile-custom-field profile-phpbb_location"><strong>Location:</strong> Essex, UK</dd>
+													
+												
+				</dl>
+
+				<div class="postbody">
+										<div id="post_content1368983">
+					
+					<h3><a href="https://www.raspberrypi.org/forums/viewtopic.php?t=176241#p1368983">Re: PIR Motion sensor always outputting</a></h3>
+
+				
+				
+															<ul class="posts-buttons">
+																																																									<li>
+									<a href="https://www.raspberrypi.org/forums/posting.php?mode=quote&amp;f=28&amp;p=1368983&amp;sid=ab3b8a754e135e91d58599e2f04a26c5" title="Reply with quote"><i class="fa fa-quote-left"></i><span>Quote</span></a>
+								</li>
+																				</ul>
+									
+				
+					
+					<p class="author"><a href="https://www.raspberrypi.org/forums/viewtopic.php?p=1368983&amp;sid=ab3b8a754e135e91d58599e2f04a26c5#p1368983">Sun Sep 23, 2018 11:37 am</a> </p>
+
+					
+					
+					
+					<div class="content">Or maybe <a href="https://gpiozero.readthedocs.io/en/stable/api_input.html#motion-sensor-d-sun-pir" class="postlink">https://gpiozero.readthedocs.io/en/stab ... -d-sun-pir</a><br>
+If you have the same sensor, of course</div>
+
+					
+															
+															
+										</div>
+
+				</div>
+
+				</div>
+											</div>
+
+			<hr class="divider">
+					
+		
+					<form id="viewtopic" method="post" action="https://www.raspberrypi.org/forums/viewtopic.php?f=28&amp;t=176241&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">
+			<fieldset class="display-options" style="margin-top: 0; ">
+								<label>Display posts from previous:<select name="st" id="st" style="display: none;"><option value="0" selected="selected">All posts</option><option value="1">1 day</option><option value="7">7 days</option><option value="14">2 weeks</option><option value="30">1 month</option><option value="90">3 months</option><option value="180">6 months</option><option value="365">1 year</option></select><div class="chosen-container chosen-container-single chosen-container-single-nosearch" style="width: auto;" title="" id="st_chosen"><a class="chosen-single" tabindex="-1"><span>All posts</span><div><b></b></div></a><div class="chosen-drop"><div class="chosen-search"><input type="text" autocomplete="off" readonly=""></div><ul class="chosen-results"></ul></div></div></label><label>Sort by<select name="sk" id="sk" style="display: none;"><option value="a">Author</option><option value="t" selected="selected">Post time</option><option value="s">Subject</option></select><div class="chosen-container chosen-container-single chosen-container-single-nosearch" style="width: auto;" title="" id="sk_chosen"><a class="chosen-single" tabindex="-1"><span>Post time</span><div><b></b></div></a><div class="chosen-drop"><div class="chosen-search"><input type="text" autocomplete="off" readonly=""></div><ul class="chosen-results"></ul></div></div></label><label><select name="sd" id="sd" style="display: none;"><option value="a" selected="selected">Ascending</option><option value="d">Descending</option></select><div class="chosen-container chosen-container-single chosen-container-single-nosearch" style="width: auto;" title="" id="sd_chosen"><a class="chosen-single" tabindex="-1"><span>Ascending</span><div><b></b></div></a><div class="chosen-drop"><div class="chosen-search"><input type="text" autocomplete="off" readonly=""></div><ul class="chosen-results"></ul></div></div></label><input type="submit" name="sort" value="Go" class="button2">
+							</fieldset>
+			</form>
+		
+				<div class="action-bar bottom">
+			<div class="buttons">
+				
+							<a href="https://www.raspberrypi.org/forums/posting.php?mode=reply&amp;f=28&amp;t=176241&amp;sid=ab3b8a754e135e91d58599e2f04a26c5" class="button font-icon" title="Post a reply">
+					<i class="fa fa-reply"></i>Post Reply				</a>
+			
+							</div>
+
+				<div class="dropdown-container dropdown-button-control topic-tools">
+		<span title="Topic tools" class="button icon-button tools-icon dropdown-trigger dropdown-select dropdown-toggle"><i class="fa fa-wrench"></i></span>
+		<div class="dropdown hidden">
+			<div class="pointer"><div class="pointer-inner"></div></div>
+			<ul class="dropdown-contents">
+																								<li class="font-icon icon-print"><a href="https://www.raspberrypi.org/forums/viewtopic.php?f=28&amp;t=176241&amp;sid=ab3b8a754e135e91d58599e2f04a26c5&amp;view=print" title="Print view" accesskey="p"><i class="fa fa-print"></i>Print view</a></li>							</ul>
+		</div>
+	</div>
+
+			
+			
+							<div class="pagination">
+					58 posts
+											<ul>
+<li class="active"><span>1</span></li><li><a href="https://www.raspberrypi.org/forums/viewtopic.php?f=28&amp;t=176241&amp;sid=ab3b8a754e135e91d58599e2f04a26c5&amp;start=25" role="button">2</a></li><li><a href="https://www.raspberrypi.org/forums/viewtopic.php?f=28&amp;t=176241&amp;sid=ab3b8a754e135e91d58599e2f04a26c5&amp;start=50" role="button">3</a></li><li class="next"><a href="https://www.raspberrypi.org/forums/viewtopic.php?f=28&amp;t=176241&amp;sid=ab3b8a754e135e91d58599e2f04a26c5&amp;start=25" rel="next" role="button"><i class="fa fa-chevron-right"></i></a></li></ul>
+									</div>
+						<div class="clear"></div>
+		</div>
+
+				
+	<p class="jumpbox-return"><a href="https://www.raspberrypi.org/forums/viewforum.php?f=28&amp;sid=ab3b8a754e135e91d58599e2f04a26c5" class="left-box arrow-left" accesskey="r">Return to “Troubleshooting”</a></p>
+
+	<div class="dropdown-container dropdown-container-right dropdown-up dropdown-left dropdown-button-control" id="jumpbox">
+		<span title="Jump to" class="dropdown-trigger button dropdown-select dropdown-toggle">
+			Jump to		</span>
+		<div class="dropdown hidden">
+			<div class="pointer"><div class="pointer-inner"></div></div>
+			<ul class="dropdown-contents">
+																			<li><a href="https://www.raspberrypi.org/forums/viewforum.php?f=19&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">Community</a></li>
+																<li>&nbsp; &nbsp;<a href="https://www.raspberrypi.org/forums/viewforum.php?f=63&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">General discussion</a></li>
+																<li>&nbsp; &nbsp;<a href="https://www.raspberrypi.org/forums/viewforum.php?f=117&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">Announcements</a></li>
+																<li>&nbsp; &nbsp;<a href="https://www.raspberrypi.org/forums/viewforum.php?f=90&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">Other languages</a></li>
+																<li>&nbsp; &nbsp;&nbsp; &nbsp;<a href="https://www.raspberrypi.org/forums/viewforum.php?f=75&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">Deutsch</a></li>
+																<li>&nbsp; &nbsp;&nbsp; &nbsp;<a href="https://www.raspberrypi.org/forums/viewforum.php?f=76&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">Español</a></li>
+																<li>&nbsp; &nbsp;&nbsp; &nbsp;<a href="https://www.raspberrypi.org/forums/viewforum.php?f=65&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">Français</a></li>
+																<li>&nbsp; &nbsp;&nbsp; &nbsp;<a href="https://www.raspberrypi.org/forums/viewforum.php?f=79&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">Italiano</a></li>
+																<li>&nbsp; &nbsp;&nbsp; &nbsp;<a href="https://www.raspberrypi.org/forums/viewforum.php?f=88&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">Nederlands</a></li>
+																<li>&nbsp; &nbsp;&nbsp; &nbsp;<a href="https://www.raspberrypi.org/forums/viewforum.php?f=82&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">日本語</a></li>
+																<li>&nbsp; &nbsp;&nbsp; &nbsp;<a href="https://www.raspberrypi.org/forums/viewforum.php?f=103&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">Polski</a></li>
+																<li>&nbsp; &nbsp;&nbsp; &nbsp;<a href="https://www.raspberrypi.org/forums/viewforum.php?f=74&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">Português</a></li>
+																<li>&nbsp; &nbsp;&nbsp; &nbsp;<a href="https://www.raspberrypi.org/forums/viewforum.php?f=84&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">Русский</a></li>
+																<li>&nbsp; &nbsp;&nbsp; &nbsp;<a href="https://www.raspberrypi.org/forums/viewforum.php?f=89&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">Türkçe</a></li>
+																<li>&nbsp; &nbsp;<a href="https://www.raspberrypi.org/forums/viewforum.php?f=57&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">User groups and events</a></li>
+																<li>&nbsp; &nbsp;<a href="https://www.raspberrypi.org/forums/viewforum.php?f=106&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">The MagPi</a></li>
+																<li><a href="https://www.raspberrypi.org/forums/viewforum.php?f=12&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">Using the Raspberry Pi</a></li>
+																<li>&nbsp; &nbsp;<a href="https://www.raspberrypi.org/forums/viewforum.php?f=91&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">Beginners</a></li>
+																<li>&nbsp; &nbsp;<a href="https://www.raspberrypi.org/forums/viewforum.php?f=28&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">Troubleshooting</a></li>
+																<li>&nbsp; &nbsp;<a href="https://www.raspberrypi.org/forums/viewforum.php?f=29&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">Advanced users</a></li>
+																<li>&nbsp; &nbsp;<a href="https://www.raspberrypi.org/forums/viewforum.php?f=102&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">Assistive technology and accessibility</a></li>
+																<li><a href="https://www.raspberrypi.org/forums/viewforum.php?f=17&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">Education</a></li>
+																<li>&nbsp; &nbsp;<a href="https://www.raspberrypi.org/forums/viewforum.php?f=99&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">Picademy</a></li>
+																<li>&nbsp; &nbsp;<a href="https://www.raspberrypi.org/forums/viewforum.php?f=49&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">Teaching and learning resources</a></li>
+																<li>&nbsp; &nbsp;<a href="https://www.raspberrypi.org/forums/viewforum.php?f=48&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">Staffroom, classroom and projects</a></li>
+																<li>&nbsp; &nbsp;&nbsp; &nbsp;<a href="https://www.raspberrypi.org/forums/viewforum.php?f=104&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">Astro Pi</a></li>
+																<li>&nbsp; &nbsp;&nbsp; &nbsp;<a href="https://www.raspberrypi.org/forums/viewforum.php?f=94&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">Mathematica</a></li>
+																<li>&nbsp; &nbsp;&nbsp; &nbsp;<a href="https://www.raspberrypi.org/forums/viewforum.php?f=111&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">High Altitude Balloon</a></li>
+																<li>&nbsp; &nbsp;&nbsp; &nbsp;<a href="https://www.raspberrypi.org/forums/viewforum.php?f=112&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">Weather station</a></li>
+																<li>&nbsp; &nbsp;<a href="https://www.raspberrypi.org/forums/viewforum.php?f=120&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">Code Club</a></li>
+																<li><a href="https://www.raspberrypi.org/forums/viewforum.php?f=14&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">Programming</a></li>
+																<li>&nbsp; &nbsp;<a href="https://www.raspberrypi.org/forums/viewforum.php?f=33&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">C/C++</a></li>
+																<li>&nbsp; &nbsp;<a href="https://www.raspberrypi.org/forums/viewforum.php?f=81&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">Java</a></li>
+																<li>&nbsp; &nbsp;<a href="https://www.raspberrypi.org/forums/viewforum.php?f=32&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">Python</a></li>
+																<li>&nbsp; &nbsp;<a href="https://www.raspberrypi.org/forums/viewforum.php?f=77&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">Scratch</a></li>
+																<li>&nbsp; &nbsp;<a href="https://www.raspberrypi.org/forums/viewforum.php?f=34&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">Other programming languages</a></li>
+																<li>&nbsp; &nbsp;&nbsp; &nbsp;<a href="https://www.raspberrypi.org/forums/viewforum.php?f=105&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">Windows 10 for IoT</a></li>
+																<li>&nbsp; &nbsp;&nbsp; &nbsp;<a href="https://www.raspberrypi.org/forums/viewforum.php?f=95&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">Wolfram Language</a></li>
+																<li>&nbsp; &nbsp;<a href="https://www.raspberrypi.org/forums/viewforum.php?f=72&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">Bare metal, Assembly language</a></li>
+																<li>&nbsp; &nbsp;<a href="https://www.raspberrypi.org/forums/viewforum.php?f=67&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">Graphics programming</a></li>
+																<li>&nbsp; &nbsp;&nbsp; &nbsp;<a href="https://www.raspberrypi.org/forums/viewforum.php?f=68&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">OpenGLES</a></li>
+																<li>&nbsp; &nbsp;&nbsp; &nbsp;<a href="https://www.raspberrypi.org/forums/viewforum.php?f=69&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">OpenVG</a></li>
+																<li>&nbsp; &nbsp;&nbsp; &nbsp;<a href="https://www.raspberrypi.org/forums/viewforum.php?f=70&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">OpenMAX</a></li>
+																<li>&nbsp; &nbsp;<a href="https://www.raspberrypi.org/forums/viewforum.php?f=31&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">General programming discussion</a></li>
+																<li><a href="https://www.raspberrypi.org/forums/viewforum.php?f=15&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">Projects</a></li>
+																<li>&nbsp; &nbsp;<a href="https://www.raspberrypi.org/forums/viewforum.php?f=36&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">Networking and servers</a></li>
+																<li>&nbsp; &nbsp;<a href="https://www.raspberrypi.org/forums/viewforum.php?f=37&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">Automation, sensing and robotics</a></li>
+																<li>&nbsp; &nbsp;<a href="https://www.raspberrypi.org/forums/viewforum.php?f=38&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">Graphics, sound and multimedia</a></li>
+																<li>&nbsp; &nbsp;<a href="https://www.raspberrypi.org/forums/viewforum.php?f=41&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">Other projects</a></li>
+																<li>&nbsp; &nbsp;<a href="https://www.raspberrypi.org/forums/viewforum.php?f=78&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">Gaming</a></li>
+																<li>&nbsp; &nbsp;&nbsp; &nbsp;<a href="https://www.raspberrypi.org/forums/viewforum.php?f=35&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">Media centres</a></li>
+																<li>&nbsp; &nbsp;&nbsp; &nbsp;<a href="https://www.raspberrypi.org/forums/viewforum.php?f=114&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">AIY Projects</a></li>
+																<li><a href="https://www.raspberrypi.org/forums/viewforum.php?f=16&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">Hardware and peripherals</a></li>
+																<li>&nbsp; &nbsp;<a href="https://www.raspberrypi.org/forums/viewforum.php?f=43&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">Camera board</a></li>
+																<li>&nbsp; &nbsp;<a href="https://www.raspberrypi.org/forums/viewforum.php?f=98&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">Compute Module</a></li>
+																<li>&nbsp; &nbsp;<a href="https://www.raspberrypi.org/forums/viewforum.php?f=108&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">Official Foundation Display</a></li>
+																<li>&nbsp; &nbsp;<a href="https://www.raspberrypi.org/forums/viewforum.php?f=45&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">HATs and other add-ons</a></li>
+																<li>&nbsp; &nbsp;<a href="https://www.raspberrypi.org/forums/viewforum.php?f=107&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">Device Tree</a></li>
+																<li>&nbsp; &nbsp;<a href="https://www.raspberrypi.org/forums/viewforum.php?f=44&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">Interfacing (DSI, CSI, I2C, etc.)</a></li>
+																<li>&nbsp; &nbsp;<a href="https://www.raspberrypi.org/forums/viewforum.php?f=140&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">Raspberry Pi 400</a></li>
+																<li>&nbsp; &nbsp;<a href="https://www.raspberrypi.org/forums/viewforum.php?f=143&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">Raspberry Pi Pico</a></li>
+																<li>&nbsp; &nbsp;&nbsp; &nbsp;<a href="https://www.raspberrypi.org/forums/viewforum.php?f=144&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">General</a></li>
+																<li>&nbsp; &nbsp;&nbsp; &nbsp;<a href="https://www.raspberrypi.org/forums/viewforum.php?f=145&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">SDK</a></li>
+																<li>&nbsp; &nbsp;&nbsp; &nbsp;<a href="https://www.raspberrypi.org/forums/viewforum.php?f=146&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">MicroPython</a></li>
+																<li>&nbsp; &nbsp;&nbsp; &nbsp;<a href="https://www.raspberrypi.org/forums/viewforum.php?f=147&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">Other RP2040 boards</a></li>
+																<li><a href="https://www.raspberrypi.org/forums/viewforum.php?f=18&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">Operating system distributions</a></li>
+																<li>&nbsp; &nbsp;<a href="https://www.raspberrypi.org/forums/viewforum.php?f=66&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">Raspberry Pi OS</a></li>
+																<li>&nbsp; &nbsp;<a href="https://www.raspberrypi.org/forums/viewforum.php?f=116&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">Raspberry Pi Desktop for PC and Mac</a></li>
+																<li>&nbsp; &nbsp;<a href="https://www.raspberrypi.org/forums/viewforum.php?f=56&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">Other</a></li>
+																<li>&nbsp; &nbsp;&nbsp; &nbsp;<a href="https://www.raspberrypi.org/forums/viewforum.php?f=73&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">Android</a></li>
+																<li>&nbsp; &nbsp;&nbsp; &nbsp;<a href="https://www.raspberrypi.org/forums/viewforum.php?f=50&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">Debian</a></li>
+																<li>&nbsp; &nbsp;&nbsp; &nbsp;<a href="https://www.raspberrypi.org/forums/viewforum.php?f=85&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">FreeBSD</a></li>
+																<li>&nbsp; &nbsp;&nbsp; &nbsp;<a href="https://www.raspberrypi.org/forums/viewforum.php?f=54&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">Gentoo</a></li>
+																<li>&nbsp; &nbsp;&nbsp; &nbsp;<a href="https://www.raspberrypi.org/forums/viewforum.php?f=71&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">Linux Kernel</a></li>
+																<li>&nbsp; &nbsp;&nbsp; &nbsp;<a href="https://www.raspberrypi.org/forums/viewforum.php?f=86&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">NetBSD</a></li>
+																<li>&nbsp; &nbsp;&nbsp; &nbsp;<a href="https://www.raspberrypi.org/forums/viewforum.php?f=87&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">openSUSE</a></li>
+																<li>&nbsp; &nbsp;&nbsp; &nbsp;<a href="https://www.raspberrypi.org/forums/viewforum.php?f=80&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">Plan 9</a></li>
+																<li>&nbsp; &nbsp;&nbsp; &nbsp;<a href="https://www.raspberrypi.org/forums/viewforum.php?f=52&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">Puppy</a></li>
+																<li>&nbsp; &nbsp;&nbsp; &nbsp;<a href="https://www.raspberrypi.org/forums/viewforum.php?f=53&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">Arch</a></li>
+																<li>&nbsp; &nbsp;&nbsp; &nbsp;<a href="https://www.raspberrypi.org/forums/viewforum.php?f=51&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">Pidora / Fedora</a></li>
+																<li>&nbsp; &nbsp;&nbsp; &nbsp;<a href="https://www.raspberrypi.org/forums/viewforum.php?f=55&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">RISCOS</a></li>
+																<li>&nbsp; &nbsp;&nbsp; &nbsp;<a href="https://www.raspberrypi.org/forums/viewforum.php?f=131&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">Ubuntu</a></li>
+																<li><a href="https://www.raspberrypi.org/forums/viewforum.php?f=20&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">Ye Olde Pi Shoppe</a></li>
+																<li>&nbsp; &nbsp;<a href="https://www.raspberrypi.org/forums/viewforum.php?f=93&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">For sale</a></li>
+																<li>&nbsp; &nbsp;<a href="https://www.raspberrypi.org/forums/viewforum.php?f=61&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">Wanted</a></li>
+																<li><a href="https://www.raspberrypi.org/forums/viewforum.php?f=21&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">Off topic</a></li>
+																<li>&nbsp; &nbsp;<a href="https://www.raspberrypi.org/forums/viewforum.php?f=62&amp;sid=ab3b8a754e135e91d58599e2f04a26c5">Off topic discussion</a></li>
+										</ul>
+		</div>
+	</div>
+
+		
+	</div>
+</div>
+
+        <!-- main element opens in overall_header.html -->
+        </main>
+		
+	
+	<div id="wrap-footer">
+		<div id="site-footer-nav" role="navigation">
+			<div class="chunk">
+				<ul class="site-footer-nav" role="menubar">
+					<li class="small-icon icon-home breadcrumbs">
+																		<span class="crumb"><a href="https://www.raspberrypi.org/forums/index.php?sid=ab3b8a754e135e91d58599e2f04a26c5" data-navbar-reference="index" title="Board index">Board index</a></span>
+											</li>
+					
+										<li class="rightside">All times are <span title="UTC">UTC</span></li>
+																<li class="small-icon icon-delete-cookies rightside"><a href="https://www.raspberrypi.org/forums/ucp.php?mode=delete_cookies&amp;sid=ab3b8a754e135e91d58599e2f04a26c5" data-ajax="true" data-refresh="true" role="menuitem">Delete cookies</a></li>
+															</ul>
+			</div>
+		</div>
+
+    <footer class="o-footer" id="rp-app-landmark-footer">
+        <div class="o-footer__slice">
+            <div class="o-container o-footer__container">
+                <div class="o-footer__nav">
+                    <div class="c-footer-nav">
+                        <span class="c-footer-nav__title">About Us</span>
+
+                        <ul class="c-footer-nav__list">
+                            <li class="c-footer-nav__item">
+                                <a class="c-footer-nav__link" href="https://www.raspberrypi.org/about">About us</a>
+                            </li>
+                            <li class="c-footer-nav__item">
+                                <a class="c-footer-nav__link" href="https://www.raspberrypi.org/about/meet-the-team">Our team</a>
+                            </li>
+                            <li class="c-footer-nav__item">
+                                <a class="c-footer-nav__link" href="https://www.raspberrypi.org/about/governance">Governance</a>
+                            </li>
+                            <li class="c-footer-nav__item">
+                                <a class="c-footer-nav__link" href="https://www.raspberrypi.org/safeguarding">Safeguarding</a>
+                            </li>
+                            <li class="c-footer-nav__item">
+                                <a class="c-footer-nav__link" href="https://www.raspberrypi.org/research-and-insights">Research</a>
+                            </li>
+                            <li class="c-footer-nav__item">
+                                <a class="c-footer-nav__link" href="https://raspberrypi.workable.com/">Jobs</a>
+                            </li>
+                            <li class="c-footer-nav__item">
+                                <a class="c-footer-nav__link" href="https://www.raspberrypi.org/contact">Contact us</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="o-footer__nav">
+                    <div class="c-footer-nav">
+                        <span class="c-footer-nav__title">Support</span>
+
+                        <ul class="c-footer-nav__list">
+                            <li class="c-footer-nav__item">
+                                <a class="c-footer-nav__link" href="https://www.raspberrypi.org/help">Help</a>
+                            </li>
+                            <li class="c-footer-nav__item">
+                                <a class="c-footer-nav__link" href="https://www.raspberrypi.org/documentation">Documentation</a>
+                            </li>
+                            <li class="c-footer-nav__item">
+                                <a class="c-footer-nav__link" href="https://projects.raspberrypi.org/">Projects</a>
+                            </li>
+                            <li class="c-footer-nav__item">
+                                <a class="c-footer-nav__link" href="https://www.raspberrypi.org/training">Training</a>
+                            </li>
+                            <li class="c-footer-nav__item">
+                                <a class="c-footer-nav__link" href="https://www.raspberrypi.org/software">Software</a>
+                            </li>
+                            <li class="c-footer-nav__item">
+                                <a class="c-footer-nav__link" href="https://www.raspberrypi.org/forums">Forums</a>
+                            </li>
+                            <li class="c-footer-nav__item">
+                                <a class="c-footer-nav__link" href="https://www.raspberrypi.org/help/faqs">FAQ</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="o-footer__newsletter">
+                    <form action="https://raspberrypi.hosted.phplist.com/lists/?p=subscribe&amp;id=1" class="c-footer-newsletter" method="POST">
+                        <span class="c-footer-newsletter__legend">
+                            Sign up to our newsletter
+                        </span>
+                        <input class="c-footer-newsletter__input" name="email" placeholder="Your email here" required="" type="email">
+                        <input type="hidden" name="htmlemail" value="1">
+                        <input type="hidden" name="list[3]" value="signup">
+                        <input type="hidden" name="listname[3]" value="Raspberry Pi Weekly">
+                        <input class="c-footer-newsletter__input--verification-code" type="text" name="VerificationCodeX" value="" size="20">
+                        <button class="c-footer-newsletter__button" name="subscribe">
+                            Subscribe
+                        </button>
+                    </form>
+                </div>
+
+                <div class="o-footer__info">
+                    <ul class="c-footer-social">
+                        <li class="c-footer-social__item">
+                            <a class="c-footer-social__link c-footer-social__link--facebook" href="https://www.facebook.com/raspberrypi">
+                                <span class="u-visually-hidden">Like Raspberry Pi on Facebook</span>
+                            </a>
+                        </li>
+                        <li class="c-footer-social__item">
+                            <a class="c-footer-social__link c-footer-social__link--twitter" href="https://twitter.com/Raspberry_Pi">
+                                <span class="u-visually-hidden">Follow Raspberry Pi on Twitter</span>
+                            </a>
+                        </li>
+                        <li class="c-footer-social__item">
+                            <a class="c-footer-social__link c-footer-social__link--instagram" href="https://www.instagram.com/raspberrypi/">
+                                <span class="u-visually-hidden">Check out what we’re having for lunch on Instagram</span>
+                            </a>
+                        </li>
+                        <li class="c-footer-social__item">
+                            <a class="c-footer-social__link c-footer-social__link--youtube" href="https://youtube.com/raspberrypi">
+                                <span class="u-visually-hidden">Subscribe to the Raspberry Pi YouTube channel</span>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <p class="c-footer-charity">
+                        Raspberry Pi Foundation<br>
+                        UK Registered Charity 1129409
+                    </p>
+
+                    <p class="c-footer-additional">
+                        <a class="c-footer-additional__link" href="https://www.raspberrypi.org/accessibility">Accessibility</a>
+                        <a class="c-footer-additional__link" href="https://www.raspberrypi.org/privacy">Privacy</a>
+                        <a class="c-footer-additional__link" href="https://www.raspberrypi.org/cookies">Cookies</a>
+                        <a class="c-footer-additional__link" href="https://www.raspberrypi.org/trademark-rules">Trademark rules and brand guidelines</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+		<div id="darkenwrapper" data-ajax-error-title="AJAX error" data-ajax-error-text="Something went wrong when processing your request." data-ajax-error-text-abort="User aborted request." data-ajax-error-text-timeout="Your request timed out; please try again." data-ajax-error-text-parsererror="Something went wrong with the request and the server returned an invalid reply.">
+			<div id="darken">&nbsp;</div>
+		</div>
+
+		<div id="phpbb_alert" class="phpbb_alert" data-l-err="Error" data-l-timeout-processing-req="Request timed out.">
+			<a href="https://www.raspberrypi.org/forums/viewtopic.php?t=176241#" class="alert_close"></a>
+			<h3 class="alert_title">&nbsp;</h3><p class="alert_text"></p>
+		</div>
+		<div id="phpbb_confirm" class="phpbb_alert">
+			<a href="https://www.raspberrypi.org/forums/viewtopic.php?t=176241#" class="alert_close"></a>
+			<div class="alert_text"></div>
+		</div>
+
+		<div style="display: none;">
+			<a id="bottom" class="anchor" accesskey="z"></a>
+					</div>
+</div>
+
+<script type="text/javascript" src="./PIR Motion sensor always outputting - Raspberry Pi Forums_files/jquery-3.5.1.min.js"></script>
+<script type="text/javascript" src="./PIR Motion sensor always outputting - Raspberry Pi Forums_files/core.js"></script>
+<script type="text/javascript" src="./PIR Motion sensor always outputting - Raspberry Pi Forums_files/js.cookie.js"></script>
+<script type="text/javascript" src="./PIR Motion sensor always outputting - Raspberry Pi Forums_files/forum_fn.js"></script>
+<script type="text/javascript" src="./PIR Motion sensor always outputting - Raspberry Pi Forums_files/ajax.js"></script>
+<script type="text/javascript" src="./PIR Motion sensor always outputting - Raspberry Pi Forums_files/chosen.jquery.min.js"></script>
+
+
+<script>
+	$(function() {
+		$("#st, #sd, #sk, #ch").chosen({
+			disable_search: true,
+			width: "auto"
+		});
+	});
+</script>
+
+<script>
+	// $(function() {
+	//
+	// 	var sidebarRecentPostDiv = document.getElementById("sidebar-recent-posts");
+	//
+	// 	$.get('/forums/app.php/feed?sid=ab3b8a754e135e91d58599e2f04a26c5', function (data) {
+	// 		$(data).find("entry").each(function (i) {
+	// 			var el = $(this);
+	// 			var entryWrap = document.createElement("div");
+	//
+	// 			var entryTitle = document.createElement("a");
+	// 			var entryAuthor = document.createElement("span");
+	// 			var entryContent = document.createElement("span");
+	//
+	// 			entryTitle.className = ("sidebar-recent-title");
+	// 			entryAuthor.className = ("sidebar-recent-author");
+	// 			entryContent.className = ("sidebar-recent-content");
+	//
+	// 			function cutText(name) {
+	// 				var elementText = el.find(name).text();
+	//
+	// 				if (name == "title") {
+	// 					elementText = elementText.substring(elementText.indexOf("•") + 2);
+	// 				} else if (name == "content") {
+	// 					elementText = elementText.replace(/(<([^>]+)>)/ig,"");
+	// 				}
+	//
+	// 				if (elementText.length > 50) {
+	// 					return elementText.substr(0, 50);
+	// 				} else {
+	// 					return elementText;
+	// 				};
+	// 			};
+	//
+	// 			entryTitle.textContent = cutText("title");
+	// 			entryAuthor.textContent = "by " + cutText("author");
+	// 			entryContent.textContent = cutText("content");
+	// 			entryURL = el.find("id").text();
+	//
+	// 			$(entryTitle).attr("href", entryURL);
+	//
+	// 			entryWrap.appendChild(entryTitle);
+	// 			entryWrap.appendChild(entryAuthor);
+	// 			entryWrap.appendChild(entryContent);
+	//
+	// 			sidebarRecentPostDiv.appendChild(entryWrap);
+	//
+	// 			if (++i >= 5) {
+	// 				return false;
+	// 			}
+	// 		});
+	// 	});
+	//
+	// });
+</script>
+
+
+
+
+
+</div>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-46270871-9', 'auto');
+  ga('set', 'anonymizeIp', true);
+  ga('send', 'pageview');
+
+</script>
+
+<script type="text/javascript" id="cookiebanner" src="./PIR Motion sensor always outputting - Raspberry Pi Forums_files/cookiebanner.min.js" data-bg="#999798" data-fg="#ffffff" data-link="#ffffff" data-moreinfo="https://www.raspberrypi.org/cookies" data-accept-on-scroll="true" data-message="We use cookies to ensure that we give you the best experience on our website. By continuing to visit this site you agree to our use of cookies." data-moreinfo-decoration="underline" integrity="sha384-ZtuZyMr5oH1P/r7ZKXXHFBkIZoNaDZ+aHMHxGUZWP0Zfwk6TgyUlgcR5QIx1kj1U" crossorigin="anonymous"></script>
+
+<script>
+    document.querySelectorAll('[data-event-category]').forEach(function (link) {
+        link.addEventListener('click', function (event) {
+            const data = event.target.dataset
+
+            if (
+                !data ||
+                typeof data.eventCategory === 'undefined' ||
+                typeof data.eventLabel === 'undefined'
+            ) {
+                return
+            }
+
+            __gaTracker('send', 'event',
+                data.eventCategory,
+                data.eventAction,
+                data.eventLabel
+            )
+        })
+    })
+</script>
+
+
+
+</body></html>
