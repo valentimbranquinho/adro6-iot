@@ -2,8 +2,8 @@
 import network
 import machine
 
-WIFI_SSID = 'HMI-XF-2G'
-WIFI_PASSWORD = '3.raparigas#2.rapazes'
+WIFI_SSID = 'adro6.iot'
+WIFI_PASSWORD = 'i8MV7ZUmY$MDfHb%Jio'
 
 
 def connect():

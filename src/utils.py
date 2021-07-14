@@ -5,7 +5,7 @@ import esp32
 import urequests
 import ujson
 
-API_URL = 'http://192.168.1.65:8000/'
+API_URL = 'http://172.16.15.69:8000/'
 
 
 class Agent:

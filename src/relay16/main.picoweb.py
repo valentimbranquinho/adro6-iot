@@ -2,7 +2,6 @@
 # ESP 32
 import machine
 import utime
-import utils
 
 try:
     import picoweb
@@ -13,10 +12,8 @@ except ImportError:
     upip.install('picoweb')
     upip.install('pycopy-ulogging')
 
-# agent = utils.Agent()
 app = picoweb.WebApp(__name__)
 led = machine.Pin(15, machine.Pin.OUT, value=0)
-# relay = machine.Pin(26, machine.Pin.OUT)
 
 
 print('Relay16 agent is ready!')
@@ -41,14 +38,3 @@ def query(request, response):
 
 logging.basicConfig(level=logging.INFO)
 app.run(debug=True, host="0.0.0.0")
-
-# while True:
-#     # print(agent.__dict__)
-#     led.value(1)
-
-#     if relay():
-#         relay.value(0)
-#     else:
-#         relay.value(1)
-
-#     utime.sleep(10)
