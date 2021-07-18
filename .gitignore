@@ -1,2 +1,3 @@
 venv
 .vscode
+iot_api.egg-info

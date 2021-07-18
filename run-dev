@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+set -ex
+
+source venv/bin/activate
+uvicorn --timeout-keep-alive 120 --port 8100 iot_api:app

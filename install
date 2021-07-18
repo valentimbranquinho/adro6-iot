@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+set -ex
+
+if [ ! -d venv ]; then
+  echo "Installing python 3.8 venv"
+  python3.8 -m venv venv
+fi
+
+source venv/bin/activate
+
+# Install api
+pip install --upgrade pip
+python setup.py develop
+
+# Create DB
+if [ ! -f iot_api.db ]; then
+  echo "Creating DB"
+  sqlite3 iot_api.db .databases
+fi
+
+# Create db tables
+python iot_api/db.py create_db

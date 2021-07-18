@@ -47,7 +47,7 @@ def get_params(request):
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.bind(('', 8080))
-s.listen(5)
+s.listen(1)
 
 while True:
     conn, addr = s.accept()

@@ -13,11 +13,12 @@ def connect():
         print("Already connected")
         return wlan
 
-    wlan.active(True)
-    wlan.connect(WIFI_SSID, WIFI_PASSWORD)
+    if not wlan.isconnected():
+        wlan.active(True)
+        wlan.connect(WIFI_SSID, WIFI_PASSWORD)
 
-    while not wlan.isconnected():
-        machine.idle()  # save power while waiting
+        while not wlan.isconnected():
+            machine.idle()  # save power while waiting
 
     print('Connection successful')
     print(wlan.ifconfig())
