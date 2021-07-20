@@ -76,6 +76,7 @@ class Broker:
 class Condition(TypedDict):
     key: str
     action: str
+    on_state: str
     after: Optional[int]
 
 
@@ -119,10 +120,11 @@ class DBMicroController:
     async def off(self, broker):
         await self.change_state(broker, False)
 
-    async def toggle(self, broker):
-        await self.change_state(broker, self.last_state != 1)
+    async def do_conditions(self, conditions: List[Condition], broker, change_to_state: str):
+        conditions = [i for i in conditions if i['on_state'] == change_to_state]
+        if not conditions:
+            return None
 
-    async def do_conditions(self, conditions: List[Condition], broker):
         keys = {i['key'] for i in conditions if i.get('key')}
         controllers = {i.key: i for i in await MicroController.all(keys)} if keys else {}
 
@@ -211,7 +213,7 @@ async def create_db():
         await db.execute("""
             INSERT INTO "micro_controllers" ("key", "broker_key", "pin", "last_state", "before_conditions", "after_conditions")
             VALUES
-                ('corridor-light-1', 'b1-1', '26', '0', NULL, '[{"action":"on","key":"corridor-light-2","after":1000}]'),
+                ('corridor-light-1', 'b1-1', '26', '0', NULL, '[{"key":"corridor-light-2","action":"on","on_state":"on","after":1000}]'),
                 ('corridor-light-2', 'b1-2', '32', '0', NULL, NULL),
                 ('dining-room-lights', 'b2-1', '25', '0', NULL, NULL),
                 ('dining-room-table-light', 'b1-2', '4', '0', NULL, NULL),
@@ -221,8 +223,8 @@ async def create_db():
                 ('ines-mariana-room-light', 'b2-1', '2', '0', NULL, NULL),
                 ('kids-wc-exaust', 'b2-1', '15', '0', NULL, NULL),
                 ('kids-wc-light', 'b2-1', '14', '0', NULL, NULL),
-                ('kids-wc-window-close', 'b2-1', '18', '0', '[{"action":"off","key":"kids-wc-window-open"}]', NULL),
-                ('kids-wc-window-open', 'b2-1', '17', '0', '[{"action":"off","key":"kids-wc-window-close"}]', NULL),
+                ('kids-wc-window-close', 'b2-1', '18', '0', '[{"key":"kids-wc-window-open","action":"off","on_state":"on"}]', NULL),
+                ('kids-wc-window-open', 'b2-1', '17', '0', '[{"key":"kids-wc-window-close","action":"off","on_state":"on"}]', NULL),
                 ('kitchen-light-1', 'b1-2', '15', '0', NULL, NULL),
                 ('kitchen-light-2', 'b1-1', '14', '0', NULL, NULL),
                 ('living-room-light', 'b1-2', '26', '0', NULL, NULL),
@@ -232,8 +234,8 @@ async def create_db():
                 ('suite-light', 'b2-1', '16', '0', NULL, NULL),
                 ('suite-wc-exaust', 'b2-1', '26', '0', NULL, NULL),
                 ('suite-wc-light', 'b2-1', '19', '0', NULL, NULL),
-                ('suite-wc-window-close', 'b2-1', '4', '0', '[{"action":"off","key":"suite-wc-window-open"}]', NULL),
-                ('suite-wc-window-open', 'b2-1', '27', '0', '[{"action":"off","key":"suite-wc-window-close"}]', NULL),
+                ('suite-wc-window-close', 'b2-1', '4', '0', '[{"key":"suite-wc-window-open","action":"off","on_state":"on"}]', NULL),
+                ('suite-wc-window-open', 'b2-1', '27', '0', '[{"key":"suite-wc-window-close","action":"off","on_state":"on"}]', NULL),
                 ('unknown-1-1-0', 'b1-1', '0', '0', NULL, NULL),
                 ('unknown-1-1-15', 'b1-1', '15', '0', NULL, NULL),
                 ('unknown-1-1-16', 'b1-1', '16', '0', NULL, NULL),
@@ -255,8 +257,8 @@ async def create_db():
                 ('unknown-1-2-33', 'b1-2', '33', '0', NULL, NULL),
                 ('unknown-1-2-5', 'b1-2', '5', '0', NULL, NULL),
                 ('unknown-2-1-12', 'b2-1', '12', '0', NULL, NULL),
-                ('wc-guests-window-close', 'b1-2', '12', '0', '[{"action":"off","key":"wc-guests-window-open"}]', NULL),
-                ('wc-guests-window-open', 'b1-2', '14', '0', '[{"action":"off","key":"wc-guests-window-close"}]', NULL);
+                ('wc-guests-window-close', 'b1-2', '12', '0', '[{"key":"wc-guests-window-open","action":"off","on_state":"on"}]', NULL),
+                ('wc-guests-window-open', 'b1-2', '14', '0', '[{"key":"wc-guests-window-close","action":"off","on_state":"on"}]', NULL);
             """)
         await db.commit()
 

@@ -57,15 +57,19 @@ async def pin_view(request):
         return JSONResponse('not found')
 
     broker = await db.Broker.get(controller.broker_key)
+    change_to_state = 'off' if controller.last_state else 'on'
 
     if controller.before_conditions:
-        await controller.do_conditions(controller.before_conditions, broker)
+        await controller.do_conditions(controller.before_conditions, broker, change_to_state)
 
-    await controller.toggle(broker)
+    if change_to_state == 'on':
+        await controller.on(broker)
+    else:
+        await controller.off(broker)
 
     background = None
     if controller.after_conditions:
-        background = BackgroundTask(controller.do_conditions, controller.after_conditions, broker)
+        background = BackgroundTask(controller.do_conditions, controller.after_conditions, broker, change_to_state)
 
     return JSONResponse(controller.last_state, background=background)
 
