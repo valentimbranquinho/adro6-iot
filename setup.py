@@ -20,4 +20,5 @@ setup(
             'rfc3986[idna2008]==1.5.0',
             'certifi',
         'aiosqlite==0.17.0',
+        'gunicorn==20.1.0'
     ])
