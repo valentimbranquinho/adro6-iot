@@ -2,4 +2,4 @@
 set -ex
 
 source venv/bin/activate
-uvicorn --timeout-keep-alive 120 --port 8100 iot_api:app
+uvicorn --timeout-keep-alive 120 --port 8100 iot_api:app --host 0.0.0.0
