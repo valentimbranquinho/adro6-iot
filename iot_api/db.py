@@ -4,7 +4,8 @@ import asyncio
 import dataclasses
 import json
 import sys
-from typing import Optional
+from typing import List, Optional
+from typing_extensions import TypedDict
 
 import aiosqlite
 import httpx
@@ -13,6 +14,12 @@ from iot_api import settings
 
 
 HTTP_POOL = httpx.AsyncClient(verify=False, limits=httpx.Limits(max_keepalive_connections=5, max_connections=5))
+BROKER_LOCKS = {}
+
+
+async def delay(microseconds: int, coroutine):
+    await asyncio.sleep(microseconds / 1000)
+    await coroutine
 
 
 @dataclasses.dataclass
@@ -21,15 +28,23 @@ class DBBroker:
     ip: str
     port: int
 
-    async def change_state(self, pin, state):
-        response = await HTTP_POOL.get(f'http://{self.ip}:{self.port}/?pin{pin}={state}')
-        return json.loads(response.read().replace(b"'", b'"'))
+    async def call(self, query: str):
+        lock = BROKER_LOCKS.get(self.key)
+        if lock is None:
+            lock = BROKER_LOCKS[self.key] = asyncio.Lock()
+
+        async with lock:
+            response = await HTTP_POOL.get(f'http://{self.ip}:{self.port}/{query}')
+            return json.loads(response.read().replace(b"'", b'"'))
+
+    def ping(self):
+        return self.call(f'')
 
     def on(self, pin):
-        return self.change_state(pin, 'on')
+        return self.call(f'?pin{pin}=on')
 
     def off(self, pin):
-        return self.change_state(pin, 'off')
+        return self.call(f'?pin{pin}=off')
 
 
 class Broker:
@@ -58,12 +73,20 @@ class Broker:
             return items[0]
 
 
+class Condition(TypedDict):
+    key: str
+    action: str
+    after: Optional[int]
+
+
 @dataclasses.dataclass
 class DBMicroController:
     key: str
     broker_key: str
     pin: str
     last_state: Optional[int]
+    before_conditions: Optional[List[Condition]]
+    after_conditions: Optional[List[Condition]]
 
     def get_last_state(self):
         if self.last_state is not None:
@@ -93,8 +116,30 @@ class DBMicroController:
     async def on(self, broker):
         await self.change_state(broker, True)
 
+    async def off(self, broker):
+        await self.change_state(broker, False)
+
     async def toggle(self, broker):
         await self.change_state(broker, self.last_state != 1)
+
+    async def do_conditions(self, conditions: List[Condition], broker):
+        keys = {i['key'] for i in conditions if i.get('key')}
+        controllers = {i.key: i for i in await MicroController.all(keys)} if keys else {}
+
+        keys = {i.broker_key for i in controllers.values()}
+        keys.discard(broker.key)
+        brokers = {i.key: i for i in await Broker.all(keys)} if keys else {}
+        brokers[broker.key] = broker
+
+        futures = []
+        for condition in conditions:
+            controller = controllers[condition['key']]
+            coroutine = getattr(controller, condition['action'])(brokers[controller.broker_key])
+            if condition.get('after'):
+                futures.append(delay(condition['after'], coroutine))
+            else:
+                futures.append(coroutine)
+        await asyncio.gather(*futures)
 
 
 class MicroController:
@@ -119,7 +164,12 @@ class MicroController:
             db.row_factory = aiosqlite.Row
             async with db.execute(query, args) as cursor:
                 async for row in cursor:
-                    items.append(DBMicroController(**row))
+                    item = DBMicroController(**row)
+                    items.append(item)
+                    if item.before_conditions:
+                        item.before_conditions = json.loads(item.before_conditions)
+                    if item.after_conditions:
+                        item.after_conditions = json.loads(item.after_conditions)
         return items
 
     @classmethod
@@ -145,10 +195,69 @@ async def create_db():
                 "broker_key" varchar(50) NOT NULL,
                 "pin" varchar(50) NOT NULL,
                 "last_state" int,
+                "before_conditions" text,
+                "after_conditions" text,
                 PRIMARY KEY ("key"),
                 CONSTRAINT {MicroController.name}_broker_pin_key UNIQUE (broker_key, pin),
                 CONSTRAINT {MicroController.name}_broker_key_fkey FOREIGN KEY (broker_key) REFERENCES "{Broker.name}"(key)
             )""")
+        await db.execute("""
+            INSERT INTO "brokers" ("key", "ip", "port")
+            VALUES
+                ('b1-1', '172.16.9.46', '8080'),
+                ('b1-2', '172.16.9.68', '8080'),
+                ('b2-1', '172.16.9.26', '8080')
+            """)
+        await db.execute("""
+            INSERT INTO "micro_controllers" ("key", "broker_key", "pin", "last_state", "before_conditions", "after_conditions")
+            VALUES
+                ('corridor-light-1', 'b1-1', '26', '0', NULL, '[{"action":"on","key":"corridor-light-2","after":1000}]'),
+                ('corridor-light-2', 'b1-2', '32', '0', NULL, NULL),
+                ('dining-room-lights', 'b2-1', '25', '0', NULL, NULL),
+                ('dining-room-table-light', 'b1-2', '4', '0', NULL, NULL),
+                ('garage-light-1', 'b1-2', '25', '0', NULL, NULL),
+                ('hall-light', 'b1-1', '12', '0', NULL, NULL),
+                ('ines-mariana-room-hall-light', 'b2-1', '33', '0', NULL, NULL),
+                ('ines-mariana-room-light', 'b2-1', '2', '0', NULL, NULL),
+                ('kids-wc-exaust', 'b2-1', '15', '0', NULL, NULL),
+                ('kids-wc-light', 'b2-1', '14', '0', NULL, NULL),
+                ('kids-wc-window-close', 'b2-1', '18', '0', '[{"action":"off","key":"kids-wc-window-open"}]', NULL),
+                ('kids-wc-window-open', 'b2-1', '17', '0', '[{"action":"off","key":"kids-wc-window-close"}]', NULL),
+                ('kitchen-light-1', 'b1-2', '15', '0', NULL, NULL),
+                ('kitchen-light-2', 'b1-1', '14', '0', NULL, NULL),
+                ('living-room-light', 'b1-2', '26', '0', NULL, NULL),
+                ('office-light', 'b1-2', '27', '0', NULL, NULL),
+                ('suite-closet-light', 'b2-1', '5', '0', NULL, NULL),
+                ('suite-hall-light', 'b2-1', '32', '0', NULL, NULL),
+                ('suite-light', 'b2-1', '16', '0', NULL, NULL),
+                ('suite-wc-exaust', 'b2-1', '26', '0', NULL, NULL),
+                ('suite-wc-light', 'b2-1', '19', '0', NULL, NULL),
+                ('suite-wc-window-close', 'b2-1', '4', '0', '[{"action":"off","key":"suite-wc-window-open"}]', NULL),
+                ('suite-wc-window-open', 'b2-1', '27', '0', '[{"action":"off","key":"suite-wc-window-close"}]', NULL),
+                ('unknown-1-1-0', 'b1-1', '0', '0', NULL, NULL),
+                ('unknown-1-1-15', 'b1-1', '15', '0', NULL, NULL),
+                ('unknown-1-1-16', 'b1-1', '16', '0', NULL, NULL),
+                ('unknown-1-1-17', 'b1-1', '17', '0', NULL, NULL),
+                ('unknown-1-1-18', 'b1-1', '18', '0', NULL, NULL),
+                ('unknown-1-1-19', 'b1-1', '19', '0', NULL, NULL),
+                ('unknown-1-1-2', 'b1-1', '2', '0', NULL, NULL),
+                ('unknown-1-1-25', 'b1-1', '25', '0', NULL, NULL),
+                ('unknown-1-1-27', 'b1-1', '27', '0', NULL, NULL),
+                ('unknown-1-1-32', 'b1-1', '32', '0', NULL, NULL),
+                ('unknown-1-1-33', 'b1-1', '33', '0', NULL, NULL),
+                ('unknown-1-1-4', 'b1-1', '4', '0', NULL, NULL),
+                ('unknown-1-1-5', 'b1-1', '5', '0', NULL, NULL),
+                ('unknown-1-2-16', 'b1-2', '16', '0', NULL, NULL),
+                ('unknown-1-2-17', 'b1-2', '17', '0', NULL, NULL),
+                ('unknown-1-2-18', 'b1-2', '18', '0', NULL, NULL),
+                ('unknown-1-2-19', 'b1-2', '19', '0', NULL, NULL),
+                ('unknown-1-2-2', 'b1-2', '2', '0', NULL, NULL),
+                ('unknown-1-2-33', 'b1-2', '33', '0', NULL, NULL),
+                ('unknown-1-2-5', 'b1-2', '5', '0', NULL, NULL),
+                ('unknown-2-1-12', 'b2-1', '12', '0', NULL, NULL),
+                ('wc-guests-window-close', 'b1-2', '12', '0', '[{"action":"off","key":"wc-guests-window-open"}]', NULL),
+                ('wc-guests-window-open', 'b1-2', '14', '0', '[{"action":"off","key":"wc-guests-window-close"}]', NULL);
+            """)
         await db.commit()
 
 

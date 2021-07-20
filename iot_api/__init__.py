@@ -1,14 +1,23 @@
 # -*- coding: utf-8 -*-
 
+import asyncio
 from collections import defaultdict
 
 from starlette.applications import Starlette
+from starlette.background import BackgroundTask
 from starlette.middleware.cors import CORSMiddleware
 from starlette.responses import JSONResponse
 from starlette.routing import Route, Mount
 from starlette.staticfiles import StaticFiles
 
 from iot_api import db
+
+
+async def ping_view(request):
+    brokers = await db.Broker.all()
+    if brokers:
+        await asyncio.gather(*(broker.ping() for broker in brokers))
+    return JSONResponse([i.key for i in brokers])
 
 
 async def pins_view(request):
@@ -48,8 +57,17 @@ async def pin_view(request):
         return JSONResponse('not found')
 
     broker = await db.Broker.get(controller.broker_key)
+
+    if controller.before_conditions:
+        await controller.do_conditions(controller.before_conditions, broker)
+
     await controller.toggle(broker)
-    return JSONResponse(controller.last_state)
+
+    background = None
+    if controller.after_conditions:
+        background = BackgroundTask(controller.do_conditions, controller.after_conditions, broker)
+
+    return JSONResponse(controller.last_state, background=background)
 
 
 async def startup():
@@ -61,16 +79,16 @@ async def startup():
     print(f'Starting controllers: {", ".join(i.key for i in active_controllers)}')
     broker_keys = {i.broker_key for i in active_controllers}
     brokers = {i.key: i for i in await db.Broker.all(broker_keys)}
-    for controller in active_controllers:
-        await controller.on(brokers[controller.broker_key])
+    await asyncio.gather(*(i.on(brokers[i.broker_key]) for i in active_controllers))
 
 
 app = Starlette(
     debug=True,
     routes=[
+        Route('/api/ping', ping_view),
         Route('/api/pins', pins_view),
         Route('/api/pin/{key}', pin_view, methods=['POST']),
-        Mount('/static', StaticFiles(directory='iot_api/static')),
+        Mount('/', StaticFiles(directory='iot_api/static')),
     ],
     on_startup=[startup])
 app = CORSMiddleware(app, allow_origins='*', allow_headers='*', allow_methods='*')
