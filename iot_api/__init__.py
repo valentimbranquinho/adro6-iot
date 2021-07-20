@@ -36,7 +36,7 @@ async def pins_view(request):
         # Use the first one
         if request.query_params.get('check-alive'):
             controller = broker_controllers[broker.key][0]
-            controller.change_state(broker, controller.get_last_state())
+            await broker.change_state(controller.pin, controller.get_last_state())
             print(f'Ping broker {broker.key} using controller pin {controller.pin}')
 
     return JSONResponse(items)

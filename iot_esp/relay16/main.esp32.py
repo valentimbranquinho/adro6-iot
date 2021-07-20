@@ -1,6 +1,8 @@
 from machine import Pin
 from utime import sleep
 
+import wifi
+
 try:
     import usocket as socket
 except:
@@ -38,6 +40,7 @@ def get_params(request):
             }
     return {}
 
+wlan = wifi.do_connect()  # wait for connection
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.bind(('', 8080))

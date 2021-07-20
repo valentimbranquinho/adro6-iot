@@ -13,13 +13,13 @@ Instalar drivers ESP32 Silabs CP210x USB to UART Bridge VCP Drivers:
 
 ### ESP32
 
-    esptool.py --chip esp32 --port /dev/tty.SLAB_USBtoUART --baud 460800 write_flash -z 0x1000 micropython/esp32-idf3-20210202-v1.14.bin
+    esptool.py --chip esp32 --port /dev/tty.SLAB_USBtoUART --baud 460800 write_flash -z 0x1000 iot_esp/micropython/esp32-idf3-20210202-v1.14.bin
 
 Para ligar ao ESP32 e começar a fazer o reset, é preciso carregar no botão de boot.
 
 ### ESP8266
 
-    esptool.py --port /dev/tty.SLAB_USBtoUART --baud 460800 write_flash --flash_size=detect 0 micropython/esp8266-20210202-v1.14.bin
+    esptool.py --port /dev/tty.SLAB_USBtoUART --baud 460800 write_flash --flash_size=detect 0 iot_esp/micropython/esp8266-20210202-v1.14.bin
 
 Tabela de relação de Pins:
 

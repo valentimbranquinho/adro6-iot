@@ -6,21 +6,13 @@ WIFI_SSID = 'adro6.iot'
 WIFI_PASSWORD = 'i8MV7ZUmY$MDfHb%Jio'
 
 
-def connect():
+def do_connect():
     wlan = network.WLAN(network.STA_IF)
-
-    if wlan.isconnected():
-        print("Already connected")
-        return wlan
-
+    wlan.active(True)
     if not wlan.isconnected():
-        wlan.active(True)
+        print('Connecting to network...')
         wlan.connect(WIFI_SSID, WIFI_PASSWORD)
-
         while not wlan.isconnected():
-            machine.idle()  # save power while waiting
+            pass
+    print('Network config:', wlan.ifconfig())
 
-    print('Connection successful')
-    print(wlan.ifconfig())
-
-    return wlan
