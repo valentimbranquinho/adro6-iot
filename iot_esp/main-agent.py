@@ -7,6 +7,7 @@ import dht
 import utils
 import wifi
 
+wlan = wifi.do_connect()
 
 agent = utils.Agent()
 
@@ -21,37 +22,35 @@ touch.config(500)
 print('Room agent is ready!')
 
 
-def updateSensors():
+def update_sensors():
     try:
         sensor.measure()
     except OSError:
         pass
 
     agent.update({
-        'touch': bool(utils.touchRead(touch) < 450),
+        'touch': bool(utils.touch_read(touch) < 450),
         'motion': bool(pir()),
         'temperature': sensor.temperature(),
         'humidity': sensor.humidity(),
     })
 
 
-def updateSensorsAndPost():
-    updateSensors()
+def update_sensors_and_post():
+    update_sensors()
     agent.post()
 
 
 # Send sensors data every 30 seconds
 tim = machine.Timer(1)
 tim.init(period=30000, mode=machine.Timer.PERIODIC,
-         callback=lambda t: updateSensorsAndPost())
+         callback=lambda t: update_sensors())
 
 while True:
-    updateSensors()
+    update_sensors()
 
     if agent.sensors['touch'] or agent.sensors['motion']:
         agent.post()
-
-        print(agent.__dict__)
 
         if agent.sensors['touch']:
             utime.sleep(1.5)

@@ -2,3 +2,4 @@ venv
 .vscode
 iot_api.egg-info
 __pycache__
+iot_api.db

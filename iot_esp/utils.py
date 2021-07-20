@@ -5,12 +5,12 @@ import esp32
 import urequests
 import ujson
 
-API_URL = 'http://172.16.15.69:8000/'
+API_URL = 'http://172.16.9.254:8100/api/agent/'
 
 
 class Agent:
     def __init__(self):
-        self.key = parseUbiCode(machine.unique_id())
+        self.key = parse_ubi_code(machine.unique_id())
         self.sensors = {
             'hall': 0,
             # 'board-temperature': 0,
@@ -18,13 +18,13 @@ class Agent:
 
         self.update()
 
-    def update(self, moreSensorsData={}):
+    def update(self, more_sensors_data={}):
         self.sensors['hall'] = esp32.hall_sensor()
         # self.sensors['board-temperature'] = (
         #     esp32.raw_temperature() - 32) * 5.0/9.0
 
-        if moreSensorsData:
-            self.sensors.update(moreSensorsData)
+        if more_sensors_data:
+            self.sensors.update(more_sensors_data)
 
     def post(self):
         try:
@@ -38,12 +38,12 @@ class Agent:
     #     self.network['ifconfig'] = wlan.ifconfig()
 
 
-def parseUbiCode(code):
+def parse_ubi_code(code):
     return ubinascii.hexlify(code).decode('utf-8')
 
 
-def touchRead(touchPad):
+def touch_read(touchpad):
     try:
-        return touchPad.read()
+        return touchpad.read()
     except ValueError:
         return 500
