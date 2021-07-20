@@ -70,7 +70,7 @@ app = Starlette(
     routes=[
         Route('/api/pins', pins_view),
         Route('/api/pin/{key}', pin_view, methods=['POST']),
-        Mount('/', StaticFiles(directory='iot_api/static')),
+        Mount('/static', StaticFiles(directory='iot_api/static')),
     ],
     on_startup=[startup])
 app = CORSMiddleware(app, allow_origins='*', allow_headers='*', allow_methods='*')
