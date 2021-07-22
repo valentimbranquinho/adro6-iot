@@ -8,7 +8,8 @@ try:
 except:
     import socket
 
-RELAY_PINS = [0, 2, 4, 5, 12, 14, 15, 16, 17, 18, 19, 25, 26, 27, 32, 33]
+
+RELAY_PINS = [2, 4, 16, 17, 18, 19, 21, 22, 23, 26, 27, 32, 33]
 
 
 def relay_control(relay_id, action):
@@ -23,10 +24,6 @@ def relay_control(relay_id, action):
     return 'on' if not pin.value() else 'off'
 
 
-# Set open relays to closed on startup
-# relay_control(0, 'off')
-
-
 def get_params(request):
     request = str(request)
     raw_params = [i.split('=') for i in request.split("\n")
@@ -39,6 +36,7 @@ def get_params(request):
                 'action': param[1],
             }
     return {}
+
 
 wlan = wifi.do_connect()  # wait for connection
 
