@@ -28,25 +28,33 @@ async def pins_view(request):
 
     items = []
     for broker in await db.Broker.all():
-        items.append({
-            'key': broker.key,
-            'ip': broker.ip,
-            'controllers': [
-                {
-                    'key': controller.key,
-                    'pin': controller.pin,
-                    'last_state': controller.get_last_state(),
-                }
-                for controller in broker_controllers[broker.key]
-            ],
-        })
+        controllers = [
+            {
+                'key': controller.key,
+                'pin': controller.pin,
+                'last_state': controller.get_last_state(),
+            }
+            for controller in broker_controllers[broker.key]
+        ]
+        if request.query_params.get('only-controllers'):
+            items.extend(controllers)
+        else:
+            items.append({
+                'key': broker.key,
+                'ip': broker.ip,
+                'controllers': controllers,
+            })
 
         # Ping broker
         # Use the first one
         if request.query_params.get('check-alive'):
             controller = broker_controllers[broker.key][0]
-            await broker.change_state(controller.pin, controller.get_last_state())
-            print(f'Ping broker {broker.key} using controller pin {controller.pin}')
+            if controller.get_last_state():
+                controller.on(broker)
+            else:
+                controller.off(broker)
+            print(
+                f'Ping broker {broker.key} using controller pin {controller.pin}')
 
     return JSONResponse(items)
 
@@ -69,7 +77,8 @@ async def pin_view(request):
 
     background = None
     if controller.after_conditions:
-        background = BackgroundTask(controller.do_conditions, controller.after_conditions, broker, change_to_state)
+        background = BackgroundTask(
+            controller.do_conditions, controller.after_conditions, broker, change_to_state)
 
     return JSONResponse(controller.last_state, background=background)
 
@@ -80,7 +89,8 @@ async def startup():
     if not active_controllers:
         return None
 
-    print(f'Starting controllers: {", ".join(i.key for i in active_controllers)}')
+    print(
+        f'Starting controllers: {", ".join(i.key for i in active_controllers)}')
     broker_keys = {i.broker_key for i in active_controllers}
     brokers = {i.key: i for i in await db.Broker.all(broker_keys)}
     await asyncio.gather(*(i.on(brokers[i.broker_key]) for i in active_controllers))
@@ -95,4 +105,5 @@ app = Starlette(
         Mount('/', StaticFiles(directory='iot_api/static')),
     ],
     on_startup=[startup])
-app = CORSMiddleware(app, allow_origins='*', allow_headers='*', allow_methods='*')
+app = CORSMiddleware(app, allow_origins='*',
+                     allow_headers='*', allow_methods='*')
