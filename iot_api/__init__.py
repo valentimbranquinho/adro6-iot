@@ -96,13 +96,22 @@ async def startup():
     await asyncio.gather(*(i.on(brokers[i.broker_key]) for i in active_controllers))
 
 
+class SPAStaticFiles(StaticFiles):
+    async def get_response(self, path: str, scope):
+        response = await super().get_response(path, scope)
+        if response.status_code != 404:
+            return response
+        else:
+            return await super().get_response('index.html', scope)
+
+
 app = Starlette(
     debug=True,
     routes=[
         Route('/api/ping', ping_view),
         Route('/api/pins', pins_view),
         Route('/api/pin/{key}', pin_view, methods=['POST']),
-        Mount('/', StaticFiles(directory='iot_api/static')),
+        Mount('/', SPAStaticFiles(directory='iot_api/static')),
     ],
     on_startup=[startup])
 app = CORSMiddleware(app, allow_origins='*',
