@@ -8,7 +8,7 @@ try:
 except:
     import socket
 
-
+# Safe PINs to use
 RELAY_PINS = [2, 4, 16, 17, 18, 19, 21, 22, 23, 26, 27, 32, 33]
 
 
