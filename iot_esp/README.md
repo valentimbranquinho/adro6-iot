@@ -40,7 +40,7 @@ Interagir com Micropython:
     screen /dev/tty.SLAB_USBtoUART 115200
 
     ampy --port /dev/tty.SLAB_USBtoUART ls
-    ampy --port /dev/tty.SLAB_USBtoUART put main.py
+    	 main.py
     ampy --port /dev/tty.SLAB_USBtoUART rm main.py
     ampy --port /dev/tty.SLAB_USBtoUART get main.py
     ampy --port /dev/tty.SLAB_USBtoUART run --no-output main.py

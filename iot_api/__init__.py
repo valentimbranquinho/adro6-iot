@@ -13,6 +13,16 @@ from starlette.staticfiles import StaticFiles
 from iot_api import db
 
 
+async def log_view(request):
+    log = await request.json()
+
+    # Test agent 2462abf3ce58
+    if (log['key'] == '2462abf3ce58' and log['sensors']['touch']):
+        await pin_view(request, 'office-light')
+
+    return JSONResponse(log)
+
+
 async def ping_view(request):
     brokers = await db.Broker.all()
     if brokers:
@@ -59,8 +69,8 @@ async def pins_view(request):
     return JSONResponse(items)
 
 
-async def pin_view(request):
-    controller = await db.MicroController.get(request.path_params['key'])
+async def pin_view(request, key=None, force_state=None):
+    controller = await db.MicroController.get(key or request.path_params['key'])
     if not controller:
         return JSONResponse('not found')
 
@@ -70,7 +80,7 @@ async def pin_view(request):
     if controller.before_conditions:
         await controller.do_conditions(controller.before_conditions, broker, change_to_state)
 
-    if change_to_state == 'on':
+    if change_to_state == 'on' or (force_state and force_state == 'on'):
         await controller.on(broker)
     else:
         await controller.off(broker)
@@ -108,6 +118,7 @@ class SPAStaticFiles(StaticFiles):
 app = Starlette(
     debug=True,
     routes=[
+        Route('/api/log', log_view, methods=['POST']),
         Route('/api/ping', ping_view),
         Route('/api/pins', pins_view),
         Route('/api/pin/{key}', pin_view, methods=['POST']),

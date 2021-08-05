@@ -5,7 +5,7 @@ import esp32
 import urequests
 import ujson
 
-API_URL = 'http://172.16.9.254:8100/api/agent/'
+API_URL = 'http://172.16.9.254:8100/api'
 
 
 class Agent:
@@ -28,7 +28,7 @@ class Agent:
 
     def post(self):
         try:
-            post = urequests.post(API_URL + 'log', json=self.__dict__)
+            post = urequests.post(API_URL + '/log', json=self.__dict__)
             post.close()
         except:
             pass

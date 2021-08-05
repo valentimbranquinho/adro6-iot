@@ -41,18 +41,26 @@ def update_sensors_and_post():
     agent.post()
 
 
-# Send sensors data every 30 seconds
+# Send sensors data every 240 seconds
 tim = machine.Timer(1)
-tim.init(period=30000, mode=machine.Timer.PERIODIC,
+tim.init(period=240000, mode=machine.Timer.PERIODIC,
          callback=lambda t: update_sensors())
+
+MOTION_DETECTED_LOCK = False
 
 while True:
     update_sensors()
 
-    if agent.sensors['touch'] or agent.sensors['motion']:
+    # Reset motion lock
+    if not agent.sensors['motion']:
+        MOTION_DETECTED_LOCK = False
+
+    if agent.sensors['touch'] or (not MOTION_DETECTED_LOCK and agent.sensors['motion']):
         agent.post()
+
+        # Avoid multiple posts
+        if agent.sensors['motion']:
+            MOTION_DETECTED_LOCK = True
 
         if agent.sensors['touch']:
             utime.sleep(1.5)
-        else:
-            utime.sleep(0.5)
