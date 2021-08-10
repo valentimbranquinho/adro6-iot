@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 set -ex
 
-source /home/pi/adro6-iot/venv/bin/activate
-gunicorn -k uvicorn.workers.UvicornWorker -b 0.0.0.0:8100 -w 2 --log-file /tmp/iot-api.log --capture-output --daemon iot_api:app
+cd /home/pi/adro6-iot
+source venv/bin/activate
+/home/pi/adro6-iot/venv/bin/gunicorn -k uvicorn.workers.UvicornWorker -b 0.0.0.0:8100 -w 2 --log-file /tmp/iot-api.log --capture-output --daemon iot_api:app
