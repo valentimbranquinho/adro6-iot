@@ -1,12 +1,16 @@
 # Use python 3.6+
+# export CFLAGS=-fcommon
+# dpkg --add-architecture armhf
+# apt-get update
+# apt-get install python-dev python3-dev
+# apt-get install gcc-multilib
+# apt-get install build-essential
+# pip3 install RPi.GPIO
 # python3.6 -m venv venv
 # source venv/bin/activate
 # pip install -r requirements.txt
 # python iot_rasp.py
 # @reboot /home/valentim/adro6/venv/bin/python /home/valentim/adro6/iot_rasp.py >> /tmp/adro6.log &
-
-# Pins 0-8 start high
-# More info: https://pinout.xyz/pinout/ground
 
 import json
 import time
