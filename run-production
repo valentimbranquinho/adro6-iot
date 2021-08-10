@@ -2,4 +2,4 @@
 set -ex
 
 source /home/pi/adro6-iot/venv/bin/activate
-gunicorn -k uvicorn.workers.UvicornWorker -b 0.0.0.0:8100 -w 1 --log-file /tmp/iot-api.log --capture-output --daemon iot_api:app
+gunicorn -k uvicorn.workers.UvicornWorker -b 0.0.0.0:8100 -w 2 --log-file /tmp/iot-api.log --capture-output --daemon iot_api:app
