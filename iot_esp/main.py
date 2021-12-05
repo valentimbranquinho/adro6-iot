@@ -53,16 +53,17 @@ while True:
     update_sensors()
 
     # Reset motion lock
-    if not agent.sensors['motion']:
-        MOTION_DETECTED_LOCK = False
+    # if not agent.sensors['motion']:
+    #     MOTION_DETECTED_LOCK = False
 
-    if (agent.sensors['touch'] > 250 or agent.sensors['touch'] < 15):
+    if (agent.sensors['touch'] > 350 or agent.sensors['touch'] < 12):
         # or (not MOTION_DETECTED_LOCK and agent.sensors['motion'])):
         agent.post()
+        utime.sleep(1.5)
 
-        # Avoid multiple posts
-        if agent.sensors['motion']:
-            MOTION_DETECTED_LOCK = True
+        # # Avoid multiple posts
+        # if agent.sensors['motion']:
+        #     MOTION_DETECTED_LOCK = True
 
-        if agent.sensors['touch']:
-            utime.sleep(1)
+        # if agent.sensors['touch']:
+        #     utime.sleep(1)
