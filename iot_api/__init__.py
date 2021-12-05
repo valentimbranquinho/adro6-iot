@@ -19,7 +19,7 @@ async def log_view(request):
     # Test agent 2462abf3ce58
     if (log['key'] == '2462abf3ce58' and
             log['sensors']['touch'] and
-            (log['sensors']['touch'] < 14 or log['sensors']['touch'] > 300 )
+            (log['sensors']['touch'] < 10 or log['sensors']['touch'] > 300 )
         ):
         await pin_view(request, 'kids-wc-light')
 
