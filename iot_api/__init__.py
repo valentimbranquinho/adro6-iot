@@ -18,7 +18,7 @@ async def log_view(request):
 
     # Test agent 2462abf3ce58
     if (log['key'] == '2462abf3ce58' and log['sensors']['touch']):
-        await pin_view(request, 'office-light')
+        await pin_view(request, 'kids-wc-light')
 
     return JSONResponse(log)
 

@@ -1,5 +1,7 @@
 # IOT Agents (ESP32 e ESP8266)
 
+	sudo tcpdump port 8100 and '(tcp-syn|tcp-ack)!=0'
+
 ## Instalação
 
 Instalar drivers ESP32 Silabs CP210x USB to UART Bridge VCP Drivers:
