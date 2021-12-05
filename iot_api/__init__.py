@@ -17,6 +17,9 @@ async def log_view(request):
     log = await request.json()
 
     # Test agent 2462abf3ce58
+    if (log['key'] == '2462abf3ce58'):
+        touch = log['sensors']['touch']
+        print(f'Touch sensor {touch}')
     if (log['key'] == '2462abf3ce58' and
             log['sensors']['touch'] and
             (log['sensors']['touch'] < 10 or log['sensors']['touch'] > 300 )
