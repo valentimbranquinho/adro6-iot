@@ -17,10 +17,10 @@ async def log_view(request):
     log = await request.json()
 
     # Test agent 2462abf3ce58
-    print('---')
-    print(log['sensors']['touch'])
-    print('---')
     if (log['key'] == '2462abf3ce58' and log['sensors']['touch']):
+        print('---')
+        print(log['sensors']['touch'])
+        print('---')
         await pin_view(request, 'kids-wc-light')
 
     return JSONResponse(log)
