@@ -56,9 +56,8 @@ while True:
     if not agent.sensors['motion']:
         MOTION_DETECTED_LOCK = False
 
-    if (agent.sensors['touch'] > 250
-        or agent.sensors['touch'] < 15
-        or (not MOTION_DETECTED_LOCK and agent.sensors['motion'])):
+    if (agent.sensors['touch'] > 250 or agent.sensors['touch'] < 15):
+        # or (not MOTION_DETECTED_LOCK and agent.sensors['motion'])):
         agent.post()
 
         # Avoid multiple posts

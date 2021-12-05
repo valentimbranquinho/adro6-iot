@@ -22,7 +22,7 @@ async def log_view(request):
         print(f'Touch sensor {touch}')
     if (log['key'] == '2462abf3ce58' and
             log['sensors']['touch'] and
-            (log['sensors']['touch'] < 10 or log['sensors']['touch'] > 300 )
+            (log['sensors']['touch'] < 15 or log['sensors']['touch'] > 300 )
         ):
         await pin_view(request, 'kids-wc-light')
 
