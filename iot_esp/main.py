@@ -51,14 +51,15 @@ MOTION_DETECTED_LOCK = False
 
 while True:
     update_sensors()
-    print(utils.touch_read(touch))
 
     # Reset motion lock
     if not agent.sensors['motion']:
         MOTION_DETECTED_LOCK = False
 
-    if agent.sensors['touch'] or (not MOTION_DETECTED_LOCK and agent.sensors['motion']):
-        #agent.post()
+    if (agent.sensors['touch'] > 250
+        or agent.sensors['touch'] < 15
+        or (not MOTION_DETECTED_LOCK and agent.sensors['motion'])):
+        agent.post()
 
         # Avoid multiple posts
         if agent.sensors['motion']:
