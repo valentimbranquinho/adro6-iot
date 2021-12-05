@@ -29,7 +29,8 @@ def update_sensors():
         pass
 
     agent.update({
-        'touch': bool(utils.touch_read(touch) < 450),
+        # 'touch': bool(utils.touch_read(touch) > 100 or utils.touch_read(touch) < 10),
+        'touch': utils.touch_read(touch),
         'motion': bool(pir()),
         'temperature': sensor.temperature(),
         'humidity': sensor.humidity(),
@@ -50,17 +51,18 @@ MOTION_DETECTED_LOCK = False
 
 while True:
     update_sensors()
+    print(utils.touch_read(touch))
 
     # Reset motion lock
     if not agent.sensors['motion']:
         MOTION_DETECTED_LOCK = False
 
     if agent.sensors['touch'] or (not MOTION_DETECTED_LOCK and agent.sensors['motion']):
-        agent.post()
+        #agent.post()
 
         # Avoid multiple posts
         if agent.sensors['motion']:
             MOTION_DETECTED_LOCK = True
 
         if agent.sensors['touch']:
-            utime.sleep(1.5)
+            utime.sleep(1)
