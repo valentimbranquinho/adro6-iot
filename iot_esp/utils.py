@@ -9,8 +9,9 @@ API_URL = 'http://172.16.9.254:8100/api'
 
 
 class Agent:
-    def __init__(self):
+    def __init__(self, name):
         self.key = parse_ubi_code(machine.unique_id())
+        self.name = name or f'agent-{self.key}'
         self.sensors = {
             'hall': 0,
             # 'board-temperature': 0,

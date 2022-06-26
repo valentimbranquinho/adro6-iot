@@ -12,19 +12,31 @@ from starlette.staticfiles import StaticFiles
 
 from iot_api import db
 
+SWITCHS = {
+    'switch-wc-kids': {
+        'touch_max': 50,
+        'lights': [
+            'kids-wc-light',
+            'suite-wc-light',
+            'suite-light',
+        ],
+    }
+}
+
 
 async def log_view(request):
     log = await request.json()
 
-    # Test agent 2462abf3ce58
-    if (log['key'] == '2462abf3ce58'):
-        touch = log['sensors']['touch']
-        print(f'Touch sensor {touch}')
-    if (log['key'] == '2462abf3ce58' and
-            log['sensors']['touch'] and
-            (log['sensors']['touch'] < 9 or log['sensors']['touch'] > 300 )
-        ):
-        await pin_view(request, 'kids-wc-light')
+    print(f'Agent call {log}')
+
+    # Check if switch is registered
+    if (log['name'] in SWITCHS.keys()):
+
+        # Check touch
+        if (log['sensors']['touch'] and 
+            log['sensors']['touch'] < SWITCHS[log['name']]['touch_max']):
+            for light in SWITCHS[log['name']]['lights']:
+                await pin_view(request, light)
 
     return JSONResponse(log)
 

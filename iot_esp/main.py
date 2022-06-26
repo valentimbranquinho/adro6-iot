@@ -9,11 +9,11 @@ import wifi
 
 wlan = wifi.do_connect()
 
-agent = utils.Agent()
+agent = utils.Agent('switch-wc-kids')
 
 pir = machine.Pin(14, machine.Pin.IN)
 touch = machine.TouchPad(machine.Pin(4))
-sensor = dht.DHT11(machine.Pin(17))
+# sensor = dht.DHT11(machine.Pin(17))
 
 # Configure the threshold at which the pin is considered touched
 touch.config(500)
@@ -23,17 +23,17 @@ print('Room agent is ready!')
 
 
 def update_sensors():
-    try:
-        sensor.measure()
-    except OSError:
-        pass
+    # try:
+    #     sensor.measure()
+    # except OSError:
+    #     pass
 
     agent.update({
         # 'touch': bool(utils.touch_read(touch) > 100 or utils.touch_read(touch) < 10),
         'touch': utils.touch_read(touch),
         'motion': bool(pir()),
-        'temperature': sensor.temperature(),
-        'humidity': sensor.humidity(),
+        # 'temperature': sensor.temperature(),
+        # 'humidity': sensor.humidity(),
     })
 
 
@@ -53,17 +53,16 @@ while True:
     update_sensors()
 
     # Reset motion lock
-    # if not agent.sensors['motion']:
-    #     MOTION_DETECTED_LOCK = False
+    if not agent.sensors['motion']:
+        MOTION_DETECTED_LOCK = False
 
-    if (agent.sensors['touch'] > 350 or agent.sensors['touch'] < 12):
-        # or (not MOTION_DETECTED_LOCK and agent.sensors['motion'])):
+    if (agent.sensors['touch'] < 50 or (not MOTION_DETECTED_LOCK and agent.sensors['motion'])):
         agent.post()
-        utime.sleep(1.5)
+        utime.sleep(.5)
 
-        # # Avoid multiple posts
-        # if agent.sensors['motion']:
-        #     MOTION_DETECTED_LOCK = True
+        # Avoid multiple posts
+        if agent.sensors['motion']:
+            MOTION_DETECTED_LOCK = True
 
         # if agent.sensors['touch']:
         #     utime.sleep(1)

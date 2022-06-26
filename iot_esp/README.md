@@ -1,6 +1,6 @@
 # IOT Agents (ESP32 e ESP8266)
 
-	sudo tcpdump port 8100 and '(tcp-syn|tcp-ack)!=0'
+    sudo tcpdump port 8100 and '(tcp-syn|tcp-ack)!=0'
 
 ## Instalação
 
@@ -11,17 +11,17 @@ Instalar drivers ESP32 Silabs CP210x USB to UART Bridge VCP Drivers:
 
 ## Boards
 
-    esptool.py --port /dev/tty.SLAB_USBtoUART erase_flash
+    esptool.py --port /dev/tty.usbserial-0001 erase_flash
 
 ### ESP32
 
-    esptool.py --chip esp32 --port /dev/tty.SLAB_USBtoUART --baud 460800 write_flash -z 0x1000 iot_esp/micropython/esp32-idf3-20210202-v1.14.bin
+    esptool.py --chip esp32 --port /dev/tty.usbserial-0001 --baud 460800 write_flash -z 0x1000 micropython/esp32-20220618-v1.19.1.bin
 
 Para ligar ao ESP32 e começar a fazer o reset, é preciso carregar no botão de boot.
 
 ### ESP8266
 
-    esptool.py --port /dev/tty.SLAB_USBtoUART --baud 460800 write_flash --flash_size=detect 0 iot_esp/micropython/esp8266-20210202-v1.14.bin
+    esptool.py --port /dev/tty.usbserial-0001 --baud 460800 write_flash --flash_size=detect 0 micropython/esp8266-20210202-v1.14.bin
 
 Tabela de relação de Pins:
 
@@ -40,13 +40,14 @@ Tabela de relação de Pins:
 Interagir com Micropython:
 
     screen /dev/tty.SLAB_USBtoUART 115200
+    screen /dev/tty.usbserial-0001 115200
 
-    ampy --port /dev/tty.SLAB_USBtoUART ls
-    	 main.py
-    ampy --port /dev/tty.SLAB_USBtoUART rm main.py
-    ampy --port /dev/tty.SLAB_USBtoUART get main.py
-    ampy --port /dev/tty.SLAB_USBtoUART run --no-output main.py
-    ampy --port /dev/tty.SLAB_USBtoUART run main.py
+    ampy --port /dev/tty.usbserial-0001 ls main.py
+    ampy --port /dev/tty.usbserial-0001 rm main.py
+    ampy --port /dev/tty.usbserial-0001 put main.py
+    ampy --port /dev/tty.usbserial-0001 get main.py
+    ampy --port /dev/tty.usbserial-0001 run --no-output main.py
+    ampy --port /dev/tty.usbserial-0001 run main.py
 
 # Documentação
 
